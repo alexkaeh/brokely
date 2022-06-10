@@ -26,6 +26,7 @@ public class App {
             mainMenu();
         }
     }
+
     private void loginMenu() {
         int menuSelection = -1;
         while (menuSelection != 0 && currentUser == null) {
@@ -52,7 +53,7 @@ public class App {
         }
     }
 
-    private void handleLogin() {
+    private void () {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
         if (currentUser == null) {

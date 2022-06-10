@@ -1,4 +1,4 @@
-package com.techelevator.tenmo.entity;
+package com.techelevator.tenmo.model;
 
 import javax.persistence.*;
 import java.util.HashSet;

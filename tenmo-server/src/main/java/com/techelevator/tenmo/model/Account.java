@@ -1,4 +1,4 @@
-package com.techelevator.tenmo.entity;
+package com.techelevator.tenmo.model;
 
 import lombok.*;
 import org.hibernate.Hibernate;
