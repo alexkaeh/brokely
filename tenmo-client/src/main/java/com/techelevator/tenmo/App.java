@@ -53,7 +53,7 @@ public class App {
         }
     }
 
-    private void () {
+    private void handleLogin() {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
         if (currentUser == null) {
