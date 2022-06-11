@@ -81,7 +81,7 @@ public class JdbcUserDao implements UserDao {
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
-        user.setId(rs.getLong("user_id"));
+        user.setId(rs.getInt("user_id"));
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setActivated(true);

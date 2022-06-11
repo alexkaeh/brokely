@@ -4,18 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/logs/2022-06-11.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/AuthenticatedUser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/AuthenticatedUser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/UserCredentials.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/UserCredentials.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/AuthenticationService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/AuthenticationService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/ConsoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/ConsoleService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/util/BasicLogger.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/util/BasicLogger.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/util/BasicLoggerException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/util/BasicLoggerException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Account.java" afterDir="false" />
+    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="stuff">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/TransferDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/TransferDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/JdbcUserDao.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/UserDTO.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +24,25 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="JpbToolWindowState">
+    <option name="myId2FirstActivated">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="true" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="true" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="true" />
+      </map>
+    </option>
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.haulmont.jpb.jpaInspector" value="false" />
+        <entry key="com.haulmont.jpb.jpaPalette" value="false" />
+        <entry key="com.haulmont.jpb.jpaStructure" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -35,6 +54,8 @@
   <component name="ProjectId" id="2AB22LEOUWmDE3DXcTIUVFWAGPG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
@@ -42,7 +63,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "C:/Users/axeka/Desktop/repos/private-repo/module-2-capstone/tenmo-client/pom.xml"
+    "last_opened_file_path": "C:/Users/axeka/Desktop/repos/pair-programming/module-2-capstone/tenmo-server/pom.xml"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -54,6 +75,29 @@
       <option name="presentableId" value="Default" />
       <updated>1654468453485</updated>
     </task>
+    <task id="LOCAL-00001" summary="stuff">
+      <created>1654981509434</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1654981509434</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="stuff" />
+    <option name="LAST_COMMIT_MESSAGE" value="stuff" />
   </component>
 </project>

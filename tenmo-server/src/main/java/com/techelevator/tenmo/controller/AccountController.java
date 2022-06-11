@@ -33,7 +33,8 @@ public class AccountController {
     @GetMapping
     public Account getAccount(Principal principal) {
         int id = userDao.findIdByUsername(principal.getName());
-        Optional<Account> opt = accountRepo.findById(id);
-        return opt.orElse(new Account());
+        Optional<Account> optAccount = accountRepo.findById(id);
+//        return optAccount.orElse(new Account());
+        return optAccount.orElseThrow();
     }
 }
