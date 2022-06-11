@@ -13,11 +13,13 @@ public class User {
 
    @Id
    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-   private Long id;
+   @Column(name = "user_id")
+   private int id;
 
    private String username;
 
    @JsonIgnore
+   @Column(name = "password_hash")
    private String password;
 
    @JsonIgnore
@@ -30,7 +32,7 @@ public class User {
 
    public User() { }
 
-   public User(Long id, String username, String password, String authorities) {
+   public User(int id, String username, String password, String authorities) {
       this.id = id;
       this.username = username;
       this.password = password;
@@ -38,11 +40,11 @@ public class User {
    }
 
 
-   public Long getId() {
+   public int getId() {
       return id;
    }
 
-   public void setId(Long id) {
+   public void setId(int id) {
       this.id = id;
    }
 
