@@ -1,0 +1,2 @@
+2022-06-11T11:54:32.7667928 400 : [{"timestamp":"2022-06-11T18:54:32.752+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST \"User registration failed.\"\r\n\tat c... (8682 bytes)]
+2022-06-11T11:55:07.4959651 401 : [no body]

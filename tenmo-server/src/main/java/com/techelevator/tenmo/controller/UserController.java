@@ -12,13 +12,7 @@ import java.util.List;
 @RequestMapping("/user")
 public class UserController {
 
-    UserDao userDao;
-
     public UserController() {
     }
 
-    @GetMapping
-    public List<User> getUsers() {
-        return userDao.findAll();
-    }
 }

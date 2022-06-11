@@ -1,11 +1,14 @@
 package com.techelevator.tenmo.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table(name="tenmo_user")
 public class User {
 
    @Id
@@ -13,9 +16,15 @@ public class User {
    private Long id;
 
    private String username;
+
+   @JsonIgnore
    private String password;
+
+   @JsonIgnore
    @Transient
    private boolean activated;
+
+   @JsonIgnore
    @Transient
    private Set<Authority> authorities = new HashSet<>();
 
@@ -27,6 +36,7 @@ public class User {
       this.password = password;
       this.activated = true;
    }
+
 
    public Long getId() {
       return id;
