@@ -1,6 +1,6 @@
 package com.techelevator.tenmo.model;
 
-public class User {
+public class UserDTO {
 
     private Long id;
     private String username;
@@ -23,8 +23,8 @@ public class User {
 
     @Override
     public boolean equals(Object other) {
-        if (other instanceof User) {
-            User otherUser = (User) other;
+        if (other instanceof UserDTO) {
+            UserDTO otherUser = (UserDTO) other;
             return otherUser.getId().equals(id)
                     && otherUser.getUsername().equals(username);
         } else {
