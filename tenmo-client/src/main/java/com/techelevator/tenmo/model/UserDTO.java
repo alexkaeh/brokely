@@ -25,7 +25,7 @@ public class UserDTO {
     public boolean equals(Object other) {
         if (other instanceof UserDTO) {
             UserDTO otherUser = (UserDTO) other;
-            return otherUser.getId().equals(id)
+            return otherUser.getId() == id
                     && otherUser.getUsername().equals(username);
         } else {
             return false;
