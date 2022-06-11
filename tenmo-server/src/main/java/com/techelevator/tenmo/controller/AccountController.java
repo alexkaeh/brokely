@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.Optional;
 
@@ -15,7 +16,7 @@ import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @RestController
 @RequestMapping("/account")
-@PreAuthorize("isAuthenticated()")
+//@PreAuthorize("isAuthenticated()")
 public class AccountController {
 
     private AccountRepository accountRepo;
@@ -30,11 +31,18 @@ public class AccountController {
     }
 
 
-    @GetMapping
-    public Account getAccount(Principal principal) {
-        int id = userDao.findIdByUsername(principal.getName());
-        Optional<Account> optAccount = accountRepo.findById(id);
+//    @GetMapping
+//    public BigDecimal getBalance(Principal principal) {
+//        int id = userDao.findIdByUsername(principal.getName());
+//        Optional<Account> optAccount = accountRepo.findById(id);
+////        return optAccount.orElse(new Account());
+//        return optAccount.orElseThrow().getBalance();
+//    }
+@GetMapping
+public BigDecimal getBalance(Principal principal) {
+    int id = 1005;
+    Optional<Account> optAccount = accountRepo.findById(id);
 //        return optAccount.orElse(new Account());
-        return optAccount.orElseThrow();
-    }
+    return optAccount.orElseThrow().getBalance();
+}
 }

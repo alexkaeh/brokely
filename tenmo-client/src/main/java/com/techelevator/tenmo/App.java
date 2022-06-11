@@ -11,6 +11,7 @@ public class App {
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final APIService userService = new UserService();
+    private final  AccountService accountService = new AccountService();
 
     private AuthenticatedUser currentUser;
 
@@ -87,7 +88,7 @@ public class App {
 
 	private void viewCurrentBalance() {
 		// TODO Auto-generated method stub
-		
+        System.out.println(accountService.getBalance());
 	}
 
 	private void viewTransferHistory() {
