@@ -14,7 +14,9 @@ public class User {
 
    private String username;
    private String password;
+   @Transient
    private boolean activated;
+   @Transient
    private Set<Authority> authorities = new HashSet<>();
 
    public User() { }
