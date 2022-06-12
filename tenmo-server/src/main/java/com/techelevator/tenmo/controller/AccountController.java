@@ -17,7 +17,7 @@ import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @RestController
 @RequestMapping("/account")
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 public class AccountController {
 
     private AccountRepository accountRepo;
@@ -33,12 +33,22 @@ public class AccountController {
     }
 
 
+//    @GetMapping
+//    public Account getBalance(Principal principal) {
+//        String name = principal.getName();
+//        Integer id = userDao.findIdByUsername(name);
+//        Optional<Account> acc = accountRepo.findByUserId(id);
+//        return acc.orElse(new Account());
+//    }
+
+    //CHANGED TO RETURN BigDecimal
     @GetMapping
-    public Account getBalance(Principal principal) {
+    public BigDecimal getBalance(Principal principal) {
         String name = principal.getName();
         Integer id = userDao.findIdByUsername(name);
         Optional<Account> acc = accountRepo.findByUserId(id);
-        return acc.orElse(new Account());
+        Account userAccount = acc.orElse(new Account());
+        return userAccount.getBalance();
     }
 }
 

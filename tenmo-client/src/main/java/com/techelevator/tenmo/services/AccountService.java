@@ -17,15 +17,16 @@ public class AccountService extends APIService {
         super(URL.ACCOUNT.getPath());
     }
 
+    //CHANGED TO BigDecimal
     public BigDecimal getBalance(){
-        Account balance = null;
+        BigDecimal balance = null;
         try {
-            ResponseEntity<Account> response = restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), Account.class);
+            ResponseEntity<BigDecimal> response = restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), BigDecimal.class);
             balance = response.getBody();
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
         }
-        assert balance != null;
-        return balance.getBalance();
+        //assert balance != null;
+        return balance;
     }
 }
