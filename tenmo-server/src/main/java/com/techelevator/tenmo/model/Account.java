@@ -9,20 +9,16 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 
 @Entity
 public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-//    @Column(name = "account_id", nullable = false)
     private int accountId;
-
-//    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-//    @JoinColumn(name = "user_id", nullable = false)
     private int userId;
-
     private BigDecimal balance;
 
 }
