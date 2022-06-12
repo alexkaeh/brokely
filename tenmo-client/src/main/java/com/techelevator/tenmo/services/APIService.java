@@ -9,7 +9,7 @@ public abstract class APIService {
     protected final String API_URL;
     protected RestTemplate restTemplate = new RestTemplate();
 
-    protected String authToken = null;
+    private static String authToken = null;
 
     public APIService(String url) {
         this.API_URL = url;
@@ -17,8 +17,8 @@ public abstract class APIService {
 
     /***************************************************************/
 
-    public void setAuthToken(String authToken) {
-        this.authToken = authToken;
+    public static void setAuthToken(String authToken) {
+        APIService.authToken = authToken;
     }
 
     HttpEntity<Void> makeAuthEntity() {

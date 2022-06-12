@@ -12,6 +12,7 @@ public class App {
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final APIService userService = new UserService();
     private final  AccountService accountService = new AccountService();
+    private final TransferService transferService = new TransferService();
 
     private AuthenticatedUser currentUser;
 
@@ -57,8 +58,9 @@ public class App {
     private void handleLogin() {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
-        //THIS IS WHAT I DID, DO FOR ALL SERVICES
-        accountService.setAuthToken(currentUser.getToken());
+        //sets authToken for all services
+        APIService.setAuthToken(currentUser.getToken());
+
         if (currentUser == null) {
             consoleService.printErrorMessage();
         }
@@ -95,7 +97,7 @@ public class App {
 
 	private void viewTransferHistory() {
 		// TODO Auto-generated method stub
-		
+        System.out.println(transferService.getAllTransfers());
 	}
 
 	private void viewPendingRequests() {

@@ -20,3 +20,4 @@
 2022-06-12T15:10:30.5494826 401 : [no body]
 2022-06-12T15:11:01.6796733 401 : [no body]
 2022-06-12T15:15:24.4020307 500 : [{"timestamp":"2022-06-12T20:15:24.320+00:00","status":500,"error":"Internal Server Error","trace":"java.lang.NullPointerException\r\n\tat com.techelevator.tenmo.controller.AccountController.getBalance... (8603 bytes)]
+2022-06-12T16:30:23.6674572 404 : [{"timestamp":"2022-06-12T21:30:23.643+00:00","status":404,"error":"Not Found","message":"No message available","path":"/transfer/"}]

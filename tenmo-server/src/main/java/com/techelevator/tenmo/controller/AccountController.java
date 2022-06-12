@@ -32,30 +32,12 @@ public class AccountController {
     public AccountController() {
     }
 
-
-//    @GetMapping
-//    public Account getBalance(Principal principal) {
-//        String name = principal.getName();
-//        Integer id = userDao.findIdByUsername(name);
-//        Optional<Account> acc = accountRepo.findByUserId(id);
-//        return acc.orElse(new Account());
-//    }
-
     //CHANGED TO RETURN BigDecimal
     @GetMapping
     public BigDecimal getBalance(Principal principal) {
         String name = principal.getName();
         Integer id = userDao.findIdByUsername(name);
         Optional<Account> acc = accountRepo.findByUserId(id);
-        Account userAccount = acc.orElse(new Account());
-        return userAccount.getBalance();
+        return acc.orElse(new Account()).getBalance();
     }
 }
-
-//@GetMapping
-//public BigDecimal getBalance(Principal principal) {
-//    int id = 1005;
-//    Optional<Account> optAccount = accountRepo.findById(id);
-//    return optAccount.isPresent() ? optAccount.get().getBalance() : new BigDecimal(0);
-//}
-//}
