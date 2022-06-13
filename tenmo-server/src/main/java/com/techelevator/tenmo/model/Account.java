@@ -21,4 +21,7 @@ public class Account {
     private int userId;
     private BigDecimal balance;
 
+    @OneToOne(fetch = FetchType.LAZY)
+    private User user;
+
 }

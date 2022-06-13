@@ -1,26 +1,23 @@
 package com.techelevator.tenmo.services;
 
-import com.techelevator.tenmo.model.TransferDTO;
-import com.techelevator.tenmo.model.UserDTO;
+import com.techelevator.tenmo.model.TransferDto;
 import com.techelevator.util.BasicLogger;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientResponseException;
 
-import java.util.List;
-
-public class TransferService extends APIService {
+public class TransferService extends ApiService {
 
     public TransferService() {
-        super(URL.TRANSFER.getPath());
+        super(Url.TRANSFER.getPath());
     }
 
-    public TransferDTO[] getAllTransfers(){
-       TransferDTO[] transfers = null;
+    public TransferDto[] getAllTransfers(){
+       TransferDto[] transfers = null;
         try {
-            ResponseEntity<TransferDTO[]> response =
-                    restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), TransferDTO[].class);
+            ResponseEntity<TransferDto[]> response =
+                    restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
             transfers = response.getBody();
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());

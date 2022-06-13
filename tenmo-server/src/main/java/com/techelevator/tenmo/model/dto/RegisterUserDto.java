@@ -1,8 +1,8 @@
-package com.techelevator.tenmo.model;
+package com.techelevator.tenmo.model.dto;
 
 import javax.validation.constraints.NotEmpty;
 
-public class RegisterUserDTO {
+public class RegisterUserDto {
 
     @NotEmpty
     private String username;

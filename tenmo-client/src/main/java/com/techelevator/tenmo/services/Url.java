@@ -1,6 +1,6 @@
 package com.techelevator.tenmo.services;
 
-public enum URL {
+public enum Url {
     BASE("http://localhost:8080/"),
     USER(BASE.getPath() + "user/"),
     ACCOUNT(BASE.getPath() + "account/"),
@@ -8,7 +8,7 @@ public enum URL {
 
     private final String path;
 
-    URL(String path) {
+    Url(String path) {
         this.path = path;
     }
 

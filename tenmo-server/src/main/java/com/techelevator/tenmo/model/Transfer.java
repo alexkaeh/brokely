@@ -15,18 +15,26 @@ public class Transfer {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     int transferId;
-
-    @ManyToOne
     int transferTypeId;
-
-    @ManyToOne
     int transferStatusId;
-
-    @ManyToOne
     int accountFrom;
+    int accountTo;
 
     @ManyToOne
-    int accountTo;
+    @JoinColumn(name = "transfer_type_id")
+    private TransferType transferType;
+
+    @ManyToOne
+    @JoinColumn(name = "transfer_status_id")
+    private TransferStatus transferStatus;
+
+    @ManyToOne
+    @JoinColumn(name = "account_from")
+    private Account accountFromJpa;
+
+    @ManyToOne
+    @JoinColumn(name = "account_to")
+    private Account accountToJpa;
 
     BigDecimal amount;
 }

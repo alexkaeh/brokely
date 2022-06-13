@@ -6,11 +6,11 @@ import com.techelevator.tenmo.services.*;
 
 public class App {
 
-    private static final String API_BASE_URL = URL.BASE.getPath();
+    private static final String API_BASE_URL = Url.BASE.getPath();
 
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
-    private final APIService userService = new UserService();
+    private final ApiService userService = new UserService();
     private final  AccountService accountService = new AccountService();
     private final TransferService transferService = new TransferService();
 
@@ -59,7 +59,7 @@ public class App {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
         //sets authToken for all services
-        APIService.setAuthToken(currentUser.getToken());
+        ApiService.setAuthToken(currentUser.getToken());
 
         if (currentUser == null) {
             consoleService.printErrorMessage();
