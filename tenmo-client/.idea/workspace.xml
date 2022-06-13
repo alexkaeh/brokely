@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="such SQL o____O">
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" afterDir="false" />
-    </list>
+    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="tiny" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -141,7 +139,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655082592689</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="tiny">
+      <created>1655082928984</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1655082928984</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -159,6 +164,7 @@
     <MESSAGE value="stuff" />
     <MESSAGE value="changed Long to int" />
     <MESSAGE value="such SQL o____O" />
-    <option name="LAST_COMMIT_MESSAGE" value="such SQL o____O" />
+    <MESSAGE value="tiny" />
+    <option name="LAST_COMMIT_MESSAGE" value="tiny" />
   </component>
 </project>

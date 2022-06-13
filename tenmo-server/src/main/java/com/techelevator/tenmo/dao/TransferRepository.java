@@ -4,7 +4,9 @@ import com.techelevator.tenmo.model.Transfer;
 import com.techelevator.tenmo.model.dto.TransferDto;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface TransferRepository extends JpaRepository<TransferDto, Integer> {
 
     @Query("select transfer_id, " +
