@@ -55,15 +55,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_opened_file_path": "C:/Users/axeka/Desktop/repos/pair-programming/module-2-capstone/img/Tenmo_erd.png"
-  }
-}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.techelevator.tenmo.model" />
@@ -99,8 +90,8 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.TenmoApplication" />
       <item itemvalue="Application.App" />
+      <item itemvalue="Application.TenmoApplication" />
     </list>
     <recent_temporary>
       <list>
