@@ -36,8 +36,8 @@ public class AccountController {
     @GetMapping
     public BigDecimal getBalance(Principal principal) {
         String name = principal.getName();
-        Integer id = userDao.findIdByUsername(name);
-        Optional<Account> acc = accountRepo.findByUserId(id);
-        return acc.orElse(new Account()).getBalance();
+        int id = userDao.findIdByUsername(name);
+        Account acc = accountRepo.findByUserId(id);
+        return acc.getBalance();
     }
 }

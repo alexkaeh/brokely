@@ -4,6 +4,7 @@ import com.techelevator.tenmo.dao.AccountRepository;
 import com.techelevator.tenmo.dao.JdbcUserDao;
 import com.techelevator.tenmo.dao.UserDao;
 import com.techelevator.tenmo.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ public class UserController {
     private AccountRepository accountRepo;
     private JdbcUserDao userDao;
 
+    @Autowired
     public UserController(AccountRepository accountRepo, JdbcUserDao userDao) {
         this.accountRepo = accountRepo;
         this.userDao = userDao;
