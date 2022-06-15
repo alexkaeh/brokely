@@ -10,46 +10,73 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 
 @RestController
 @RequestMapping("/transfer")
 public class TransferController {
 
-    private TransferRepository trRepo;
+    private TransferRepository transferRepo;
     private JdbcUserDao userDao;
-    private TransferStatusRepository trStatRepo;
-    private TransferTypeRepository trTypeRepo;
-    private AccountRepository accRepo;
 
     @Autowired
-    public TransferController(TransferRepository trRepo, JdbcUserDao userDao, TransferStatusRepository trStRepo, TransferTypeRepository trTyRepo, AccountRepository accRepo) {
-        this.trRepo = trRepo;
+    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao) {
+        this.transferRepo = transferRepo;
         this.userDao = userDao;
-        this.trStatRepo = trStRepo;
-        this.trTypeRepo = trTyRepo;
-        this.accRepo = accRepo;
     }
 
-
-    @GetMapping
+    @GetMapping("")
     public List<TransferDto> getAllTransfers(Principal principal) {
-        int userId = userDao.findIdByUsername(principal.getName());
-        return null;
+        List<TransferDto> outputs = new ArrayList<>();
+        List<Transfer> transfers = transferRepo.findAll();
+        String name = principal.getName();
+
+        for (Transfer transfer : transfers) {
+            TransferDto transferDto = new TransferDto(
+                    transfer.getTransferId(),
+                    transfer.getTransferType().getTransferTypeDesc(),
+                    transfer.getTransferStatus().getTransferStatusDesc(),
+                    transfer.getAccountFrom().getUser().getUsername(),
+                    transfer.getAccountTo().getUser().getUsername(),
+                    transfer.getAmount()
+            );
+            if (transferDto.getAccountFromName().equals(name) || transferDto.getAccountToName().equals(name)) {
+                outputs.add(transferDto);
+            }
+        }
+        return outputs;
     }
 
-    @GetMapping(path = "/{id}")
+    @GetMapping("/{id}")
     public TransferDto getTransferById(Principal principal, @PathVariable int id) {
-        Transfer transfer = trRepo.findByTransferId(id);
-        return new TransferDto(  // A truly horrifying multi-table join, decipher at your own risk
+        Transfer transfer = transferRepo.findByTransferId(id);
+        String name = principal.getName();
+
+        TransferDto transferDto = new TransferDto(
                 transfer.getTransferId(),
-                trTypeRepo.findById(transfer.getTransferTypeId()).getTransferTypeDesc(),
-                trStatRepo.findById(transfer.getTransferStatusId()).getTransferStatusDesc(),
-                userDao.findUsernameById(accRepo.findById(transfer.getAccountFrom()).getUserId()),
-                userDao.findUsernameById(accRepo.findById(transfer.getAccountTo()).getUserId()),
+                transfer.getTransferType().getTransferTypeDesc(),
+                transfer.getTransferStatus().getTransferStatusDesc(),
+                transfer.getAccountFrom().getUser().getUsername(),
+                transfer.getAccountTo().getUser().getUsername(),
                 transfer.getAmount()
         );
+        if (transferDto.getAccountFromName().equals(name) || transferDto.getAccountToName().equals(name)) {
+            return transferDto;
+        }
+        return new TransferDto(); // User did not have permission to access
     }
+
+//        return new TransferDto(  // A truly horrifying multi-table join, decipher at your own risk
+//                transfer.getTransferId(),
+//                trTypeRepo.findById(transfer.getTransferTypeId()).getTransferTypeDesc(),
+//                trStatRepo.findById(transfer.getTransferStatusId()).getTransferStatusDesc(),
+//                userDao.findUsernameById(accRepo.findById(transfer.getAccountFrom()).getUserId()),
+//                userDao.findUsernameById(accRepo.findById(transfer.getAccountTo()).getUserId()),
+//                transfer.getAmount()
+//        );
+
 
 }

@@ -17,12 +17,13 @@ public class Account {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "account_id")
     private int accountId;
-    private int userId;
+//    private int userId;
     private BigDecimal balance;
 
-//    @OneToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name="user_id", insertable = false, updatable = false)
-//    private User user;
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", insertable = false, updatable = false)
+    private User user;
 
 }
