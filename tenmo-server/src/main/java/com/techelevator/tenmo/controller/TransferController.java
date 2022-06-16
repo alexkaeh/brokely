@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 
 @RestController
@@ -19,12 +19,24 @@ public class TransferController {
 
     private TransferRepository transferRepo;
     private JdbcUserDao userDao;
+    private TransferTypeRepository transferTypeRepo;
+    private TransferStatusRepository transferStatusRepo;
+    private AccountRepository accountRepo;
 
     @Autowired
-    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao) {
+    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao, TransferTypeRepository transferTypeRepo, TransferStatusRepository transferStatusRepo, AccountRepository accountRepo) {
         this.transferRepo = transferRepo;
         this.userDao = userDao;
+        this.transferTypeRepo = transferTypeRepo;
+        this.transferStatusRepo = transferStatusRepo;
+        this.accountRepo = accountRepo;
     }
+
+//    @Autowired
+//    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao) {
+//        this.transferRepo = transferRepo;
+//        this.userDao = userDao;
+//    }
 
     @GetMapping("")
     public List<TransferDto> getAllTransfers(Principal principal) {
@@ -41,7 +53,8 @@ public class TransferController {
                     transfer.getAccountTo().getUser().getUsername(),
                     transfer.getAmount()
             );
-            if (transferDto.getAccountFromName().equals(name) || transferDto.getAccountToName().equals(name)) {
+            // checks that from = user, or to = user, but not both
+            if (transferDto.getAccountFromName().equals(name) ^ transferDto.getAccountToName().equals(name)) {
                 outputs.add(transferDto);
             }
         }
@@ -64,39 +77,27 @@ public class TransferController {
         if (transferDto.getAccountFromName().equals(name) || transferDto.getAccountToName().equals(name)) {
             return transferDto;
         }
-        return new TransferDto(); // User did not have permission to access
+        // FIXME This triggers if user didn't have auth, should throw an HTTP error instead
+        return new TransferDto();
     }
 
-//        return new TransferDto(  // A truly horrifying multi-table join, decipher at your own risk
-//                transfer.getTransferId(),
-//                trTypeRepo.findById(transfer.getTransferTypeId()).getTransferTypeDesc(),
-//                trStatRepo.findById(transfer.getTransferStatusId()).getTransferStatusDesc(),
-//                userDao.findUsernameById(accRepo.findById(transfer.getAccountFrom()).getUserId()),
-//                userDao.findUsernameById(accRepo.findById(transfer.getAccountTo()).getUserId()),
-//                transfer.getAmount()
-//        );
-
-    //@RestController
-    //@RequestMapping("/user")
-    //public class UserController {
-    //
-    //    private AccountRepository accountRepo;
-    //    private JdbcUserDao userDao;
-    //
-    //    @Autowired
-    //    public UserController(AccountRepository accountRepo, JdbcUserDao userDao) {
-    //        this.accountRepo = accountRepo;
-    //        this.userDao = userDao;
-    //    }
-    //
-    //    @GetMapping
-    //    public List<User> getUsers(){
-    //        return userDao.findAll();
-    //    }
-
     @PostMapping("/send")
-    public Transfer sendMoney (@Valid @RequestBody Transfer transfer, Principal principal){
-        transfer.setAccountFrom(userDao.findIdByUsername(principal.getName()));
-        transferRepo.save();
+    public Transfer sendMoney (@Valid @RequestBody TransferDto newTransferDto, Principal principal){
+        int userId = userDao.findIdByUsername(principal.getName());
+        Transfer newTransfer = new Transfer();
+
+        // FIXME transfer id should be set automatically by postgres?
+        newTransfer.setTransferId(0);
+        newTransfer.setTransferType(transferTypeRepo.findByTransferTypeDesc("Send"));
+        newTransfer.setTransferStatus(transferStatusRepo.findByTransferStatusDesc("Approved"));
+        // FIXME this is returning nul)l
+        newTransfer.setAccountFrom(accountRepo.findById(userId));
+        // FIXME this is returning nul)l
+        newTransfer.setAccountTo(accountRepo.findById(newTransferDto.getAccountToId()));
+        newTransfer.setAmount(newTransferDto.getAmount());
+
+        // TODO validation goes here
+
+        return transferRepo.save(newTransfer);
     }
 }

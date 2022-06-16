@@ -1,25 +1,30 @@
 package com.techelevator.tenmo.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 import java.math.BigDecimal;
 
-@Getter
-@Setter
-@AllArgsConstructor
-@NoArgsConstructor
 public class TransferDto {
 
     private int transferId;
     private String transferType;
     private String transferStatus;
-    private String userFrom;
-    private String userTo;
-    private  int userToId;
+    private String accountFrom;
+    private String accountTo;
+    private  int accountToId;
+
     private BigDecimal amount;
+
+    public TransferDto(int transferId, String transferType, String transferStatus, String accountFrom, String accountTo, int accountToId, BigDecimal amount) {
+        this.transferId = transferId;
+        this.transferType = transferType;
+        this.transferStatus = transferStatus;
+        this.accountFrom = accountFrom;
+        this.accountTo = accountTo;
+        this.accountToId = accountToId;
+        this.amount = amount;
+    }
+
+    public TransferDto() {
+    }
 
     @Override
     public String toString(){
@@ -29,16 +34,72 @@ public class TransferDto {
         StringBuilder sb = new StringBuilder();
         if(hasDetails){
             sb.append("Id: ").append(transferId);
-            sb.append("\nFrom: ").append(userFrom);
-            sb.append("\nTo: ").append(userFrom);
+            sb.append("\nFrom: ").append(accountFrom);
+            sb.append("\nTo: ").append(accountFrom);
             sb.append("\nType: ").append(transferType);
             sb.append("\nStatus: ").append(transferStatus);
             sb.append("\nAmount: ").append(amount);
             return sb.toString();
         }
         sb.append(transferId);
-        sb.append("\t\t").append("From: ").append(userToId);
+        sb.append("\t\t").append("From: ").append(accountToId);
         sb.append("\t\t").append("$").append(amount);
         return sb.toString();
+    }
+
+    public int getTransferId() {
+        return this.transferId;
+    }
+
+    public String getTransferType() {
+        return this.transferType;
+    }
+
+    public String getTransferStatus() {
+        return this.transferStatus;
+    }
+
+    public String getAccountFrom() {
+        return this.accountFrom;
+    }
+
+    public String getAccountTo() {
+        return this.accountTo;
+    }
+
+    public int getAccountToId() {
+        return this.accountToId;
+    }
+
+    public BigDecimal getAmount() {
+        return this.amount;
+    }
+
+    public void setTransferId(int transferId) {
+        this.transferId = transferId;
+    }
+
+    public void setTransferType(String transferType) {
+        this.transferType = transferType;
+    }
+
+    public void setTransferStatus(String transferStatus) {
+        this.transferStatus = transferStatus;
+    }
+
+    public void setAccountFrom(String accountFrom) {
+        this.accountFrom = accountFrom;
+    }
+
+    public void setAccountTo(String accountTo) {
+        this.accountTo = accountTo;
+    }
+
+    public void setAccountToId(int accountToId) {
+        this.accountToId = accountToId;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }

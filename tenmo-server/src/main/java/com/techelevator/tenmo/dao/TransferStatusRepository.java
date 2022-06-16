@@ -8,4 +8,7 @@ import org.springframework.stereotype.Repository;
 public interface TransferStatusRepository extends JpaRepository<TransferStatus, Integer> {
 
     TransferStatus findById(int id);
+
+    // FIXME I have no idea if Spring can actually parse this method
+    TransferStatus findByTransferStatusDesc(String transferStatusDesc);
 }

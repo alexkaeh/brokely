@@ -1,16 +1,7 @@
 package com.techelevator.tenmo.model;
 
-import lombok.*;
-import org.hibernate.Hibernate;
-
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Objects;
-
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 
 @Entity
 public class Account {
@@ -26,4 +17,36 @@ public class Account {
     @JoinColumn(name="user_id", insertable = false, updatable = false)
     private User user;
 
+    public Account(int accountId, BigDecimal balance, User user) {
+        this.accountId = accountId;
+        this.balance = balance;
+        this.user = user;
+    }
+
+    public Account() {
+    }
+
+    public int getAccountId() {
+        return this.accountId;
+    }
+
+    public BigDecimal getBalance() {
+        return this.balance;
+    }
+
+    public User getUser() {
+        return this.user;
+    }
+
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
+    }
+
+    public void setBalance(BigDecimal balance) {
+        this.balance = balance;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
 }

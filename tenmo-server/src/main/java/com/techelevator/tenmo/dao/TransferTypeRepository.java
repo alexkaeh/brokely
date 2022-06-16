@@ -10,4 +10,7 @@ public interface TransferTypeRepository extends JpaRepository<TransferType, Inte
 
     TransferType findById(int id);
 
+    // FIXME I have no idea if Spring can actually parse this method
+    TransferType findByTransferTypeDesc(String transferTypeDesc);
+
 }

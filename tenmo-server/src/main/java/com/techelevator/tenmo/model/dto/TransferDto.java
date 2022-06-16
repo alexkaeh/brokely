@@ -1,18 +1,9 @@
 package com.techelevator.tenmo.model.dto;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import javax.persistence.Column;
 import javax.persistence.Id;
 import java.math.BigDecimal;
 
-@Getter
-@Setter
-//@Entity
-//@Table(name = "transfer")
-//@SecondaryTable(name = "transfer_status", pkJoinColumns = @PrimaryKeyJoinColumn(name = "transfer_status_id"))
-//@SecondaryTable(name = "transfer_type", pkJoinColumns = @PrimaryKeyJoinColumn(name = "transfer_type_id"))
 public class TransferDto {
 
     @Id
@@ -30,7 +21,13 @@ public class TransferDto {
     @Column(name="username", table = "tenmo_user")
     private String accountToName;
 
+    private int accountToId;
+
     private BigDecimal amount;
+
+
+    public TransferDto() {
+    }
 
     public TransferDto(int transferId, String transferTypeDesc, String transferStatusDesc, String accountFromName, String accountToName, BigDecimal amount) {
         this.transferId = transferId;
@@ -41,6 +38,59 @@ public class TransferDto {
         this.amount = amount;
     }
 
-    public TransferDto() {
+    public int getTransferId() {
+        return this.transferId;
+    }
+
+    public String getTransferTypeDesc() {
+        return this.transferTypeDesc;
+    }
+
+    public String getTransferStatusDesc() {
+        return this.transferStatusDesc;
+    }
+
+    public String getAccountFromName() {
+        return this.accountFromName;
+    }
+
+    public String getAccountToName() {
+        return this.accountToName;
+    }
+
+    public int getAccountToId() {
+        return this.accountToId;
+    }
+
+    public BigDecimal getAmount() {
+        return this.amount;
+    }
+
+    public void setTransferId(int transferId) {
+        this.transferId = transferId;
+    }
+
+    public void setTransferTypeDesc(String transferTypeDesc) {
+        this.transferTypeDesc = transferTypeDesc;
+    }
+
+    public void setTransferStatusDesc(String transferStatusDesc) {
+        this.transferStatusDesc = transferStatusDesc;
+    }
+
+    public void setAccountFromName(String accountFromName) {
+        this.accountFromName = accountFromName;
+    }
+
+    public void setAccountToName(String accountToName) {
+        this.accountToName = accountToName;
+    }
+
+    public void setAccountToId(int accountToId) {
+        this.accountToId = accountToId;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 }
