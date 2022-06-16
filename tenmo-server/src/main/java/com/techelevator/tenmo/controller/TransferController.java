@@ -4,11 +4,9 @@ import com.techelevator.tenmo.dao.*;
 import com.techelevator.tenmo.model.Transfer;
 import com.techelevator.tenmo.model.dto.TransferDto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -78,5 +76,27 @@ public class TransferController {
 //                transfer.getAmount()
 //        );
 
+    //@RestController
+    //@RequestMapping("/user")
+    //public class UserController {
+    //
+    //    private AccountRepository accountRepo;
+    //    private JdbcUserDao userDao;
+    //
+    //    @Autowired
+    //    public UserController(AccountRepository accountRepo, JdbcUserDao userDao) {
+    //        this.accountRepo = accountRepo;
+    //        this.userDao = userDao;
+    //    }
+    //
+    //    @GetMapping
+    //    public List<User> getUsers(){
+    //        return userDao.findAll();
+    //    }
 
+    @PostMapping("/send")
+    public Transfer sendMoney (@Valid @RequestBody Transfer transfer, Principal principal){
+        transfer.setAccountFrom(userDao.findIdByUsername(principal.getName()));
+        transferRepo.save();
+    }
 }

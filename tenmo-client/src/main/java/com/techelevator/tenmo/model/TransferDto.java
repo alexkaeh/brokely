@@ -1,7 +1,16 @@
 package com.techelevator.tenmo.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.math.BigDecimal;
 
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class TransferDto {
 
     private int transferId;
@@ -9,66 +18,27 @@ public class TransferDto {
     private String transferStatus;
     private String userFrom;
     private String userTo;
+    private  int userToId;
     private BigDecimal amount;
 
-    public TransferDto() {
+    @Override
+    public String toString(){
+        return toString(false);
     }
-
-    public TransferDto(int transferId, String transferType, String transferStatus,
-                       String userFrom, String userTo, BigDecimal amount) {
-        this.transferId = transferId;
-        this.transferType = transferType;
-        this.transferStatus = transferStatus;
-        this.userFrom = userFrom;
-        this.userTo = userTo;
-        this.amount = amount;
-    }
-
-    public int getTransferId() {
-        return transferId;
-    }
-
-    public void setTransferId(int transferId) {
-        this.transferId = transferId;
-    }
-
-    public String getTransferType() {
-        return transferType;
-    }
-
-    public void setTransferType(String transferType) {
-        this.transferType = transferType;
-    }
-
-    public String getTransferStatus() {
-        return transferStatus;
-    }
-
-    public void setTransferStatus(String transferStatus) {
-        this.transferStatus = transferStatus;
-    }
-
-    public String getUserFrom() {
-        return userFrom;
-    }
-
-    public void setUserFrom(String userFrom) {
-        this.userFrom = userFrom;
-    }
-
-    public String getUserTo() {
-        return userTo;
-    }
-
-    public void setUserTo(String userTo) {
-        this.userTo = userTo;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
+    public String toString(boolean hasDetails){
+        StringBuilder sb = new StringBuilder();
+        if(hasDetails){
+            sb.append("Id: ").append(transferId);
+            sb.append("\nFrom: ").append(userFrom);
+            sb.append("\nTo: ").append(userFrom);
+            sb.append("\nType: ").append(transferType);
+            sb.append("\nStatus: ").append(transferStatus);
+            sb.append("\nAmount: ").append(amount);
+            return sb.toString();
+        }
+        sb.append(transferId);
+        sb.append("\t\t").append("From: ").append(userToId);
+        sb.append("\t\t").append("$").append(amount);
+        return sb.toString();
     }
 }

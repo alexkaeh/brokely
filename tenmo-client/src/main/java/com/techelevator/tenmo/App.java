@@ -2,7 +2,11 @@ package com.techelevator.tenmo;
 
 import com.techelevator.tenmo.model.AuthenticatedUser;
 import com.techelevator.tenmo.model.UserCredentials;
+import com.techelevator.tenmo.model.UserDto;
 import com.techelevator.tenmo.services.*;
+
+import java.math.BigDecimal;
+import java.util.Scanner;
 
 public class App {
 
@@ -10,7 +14,7 @@ public class App {
 
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
-    private final ApiService userService = new UserService();
+    private final UserService userService = new UserService();
     private final  AccountService accountService = new AccountService();
     private final TransferService transferService = new TransferService();
 
@@ -58,11 +62,13 @@ public class App {
     private void handleLogin() {
         UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
-        //sets authToken for all services
-        ApiService.setAuthToken(currentUser.getToken());
 
         if (currentUser == null) {
             consoleService.printErrorMessage();
+        }
+        else {
+            //sets authToken for all services
+            ApiService.setAuthToken(currentUser.getToken());
         }
     }
 
@@ -107,12 +113,23 @@ public class App {
 
 	private void sendBucks() {
 		// TODO Auto-generated method stub
-		
+        UserDto[] users = userService.getUsers();
+        consoleService.displayUsers(users);
+
+        //get recipient id
+        Scanner sc = new Scanner(System.in);
+        System.out.println("\nEnter ID of user you are requesting from (0 to cancel): ");
+        int recipientId = sc.nextInt();
+
+        //get transfer amount
+        System.out.println("Enter amount: ");
+        BigDecimal transferAmount = sc.nextBigDecimal();
+
+        transferService.sendMoney(recipientId,transferAmount);
 	}
 
 	private void requestBucks() {
 		// TODO Auto-generated method stub
 		
 	}
-
 }

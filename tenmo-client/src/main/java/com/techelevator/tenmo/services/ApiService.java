@@ -9,7 +9,7 @@ public abstract class ApiService {
     protected final String API_URL;
     protected RestTemplate restTemplate = new RestTemplate();
 
-    private static String authToken = null;
+    protected static String authToken = null;
 
     public ApiService(String url) {
         this.API_URL = url;
