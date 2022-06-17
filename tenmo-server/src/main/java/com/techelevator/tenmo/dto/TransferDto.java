@@ -1,4 +1,4 @@
-package com.techelevator.tenmo.model.dto;
+package com.techelevator.tenmo.dto;
 
 import javax.persistence.Column;
 import javax.persistence.Id;

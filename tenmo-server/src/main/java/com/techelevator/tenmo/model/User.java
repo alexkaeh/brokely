@@ -1,7 +1,7 @@
 package com.techelevator.tenmo.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.techelevator.tenmo.model.dto.Authority;
+import com.techelevator.tenmo.dto.Authority;
 
 import javax.persistence.*;
 import java.util.HashSet;
