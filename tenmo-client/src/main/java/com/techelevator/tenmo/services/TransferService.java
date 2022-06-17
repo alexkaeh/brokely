@@ -32,7 +32,7 @@ public class TransferService extends ApiService {
         transfer.setUserToId(userToId);
         transfer.setAmount(amount);
         try {
-            HttpEntity<TransferDto> response = restTemplate.exchange(API_URL, HttpMethod.POST, makeTransferDtoEntity(transfer), TransferDto.class);
+            HttpEntity<TransferDto> response = restTemplate.exchange(API_URL + "send", HttpMethod.POST, makeTransferDtoEntity(transfer), TransferDto.class);
             transfer = response.getBody();
             return true;
         } catch (RestClientException e) {

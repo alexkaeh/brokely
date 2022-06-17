@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -80,6 +81,7 @@ public class TransferController {
     public Transfer sendMoney (@Valid @RequestBody TransferDto newTransferDto, Principal principal){
         int userFromId = userDao.findIdByUsername(principal.getName());
         int userToId = newTransferDto.getUserToId();
+        BigDecimal amount = newTransferDto.getAmount();
         Transfer newTransfer = new Transfer();
 
         newTransfer.setTransferType(transferTypeRepo.findByTransferTypeDesc("Send"));
@@ -89,6 +91,16 @@ public class TransferController {
         newTransfer.setAmount(newTransferDto.getAmount());
 
         // TODO validation goes here
+
+        // TODO increase recipient balance
+        Account recipient = accountRepo.findByUserId(userToId);
+        recipient.setBalance(recipient.getBalance().add(amount));
+        accountRepo.save(recipient);
+
+        // TODO decrease balance
+        Account sender = accountRepo.findByUserId(userFromId);
+        sender.setBalance(recipient.getBalance().subtract(amount));
+        accountRepo.save(sender);
 
         return transferRepo.save(newTransfer);
     }
