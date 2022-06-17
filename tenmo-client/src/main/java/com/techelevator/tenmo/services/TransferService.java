@@ -29,7 +29,7 @@ public class TransferService extends ApiService {
 
     public boolean sendMoney(int userToId, BigDecimal amount){
         TransferDto transfer = new TransferDto();
-        transfer.setAccountToId(userToId);
+        transfer.setUserToId(userToId);
         transfer.setAmount(amount);
         try {
             HttpEntity<TransferDto> response = restTemplate.exchange(API_URL, HttpMethod.POST, makeTransferDtoEntity(transfer), TransferDto.class);

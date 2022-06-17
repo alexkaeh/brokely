@@ -9,7 +9,7 @@ public class TransferDto {
     private String transferStatus;
     private String accountFrom;
     private String accountTo;
-    private  int accountToId;
+    private  int userToId;
 
     private BigDecimal amount;
 
@@ -19,7 +19,7 @@ public class TransferDto {
         this.transferStatus = transferStatus;
         this.accountFrom = accountFrom;
         this.accountTo = accountTo;
-        this.accountToId = accountToId;
+        this.userToId = accountToId;
         this.amount = amount;
     }
 
@@ -42,7 +42,7 @@ public class TransferDto {
             return sb.toString();
         }
         sb.append(transferId);
-        sb.append("\t\t").append("From: ").append(accountToId);
+        sb.append("\t\t").append("From: ").append(userToId);
         sb.append("\t\t").append("$").append(amount);
         return sb.toString();
     }
@@ -67,8 +67,8 @@ public class TransferDto {
         return this.accountTo;
     }
 
-    public int getAccountToId() {
-        return this.accountToId;
+    public int getUserToId() {
+        return this.userToId;
     }
 
     public BigDecimal getAmount() {
@@ -95,8 +95,8 @@ public class TransferDto {
         this.accountTo = accountTo;
     }
 
-    public void setAccountToId(int accountToId) {
-        this.accountToId = accountToId;
+    public void setUserToId(int userToId) {
+        this.userToId = userToId;
     }
 
     public void setAmount(BigDecimal amount) {

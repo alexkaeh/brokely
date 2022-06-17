@@ -1,13 +1,12 @@
 package com.techelevator.tenmo.controller;
 
 import com.techelevator.tenmo.dao.*;
-import com.techelevator.tenmo.model.Transfer;
+import com.techelevator.tenmo.model.*;
 import com.techelevator.tenmo.model.dto.TransferDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.math.BigDecimal;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -22,9 +21,10 @@ public class TransferController {
     private TransferTypeRepository transferTypeRepo;
     private TransferStatusRepository transferStatusRepo;
     private AccountRepository accountRepo;
+    private TransferInsertRepository transferInsertRepo;
 
     @Autowired
-    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao, TransferTypeRepository transferTypeRepo, TransferStatusRepository transferStatusRepo, AccountRepository accountRepo) {
+    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao, TransferTypeRepository transferTypeRepo, TransferStatusRepository transferStatusRepo, AccountRepository accountRepo, TransferInsertRepository transferInsertRepo) {
         this.transferRepo = transferRepo;
         this.userDao = userDao;
         this.transferTypeRepo = transferTypeRepo;
@@ -32,11 +32,6 @@ public class TransferController {
         this.accountRepo = accountRepo;
     }
 
-//    @Autowired
-//    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao) {
-//        this.transferRepo = transferRepo;
-//        this.userDao = userDao;
-//    }
 
     @GetMapping("")
     public List<TransferDto> getAllTransfers(Principal principal) {
@@ -83,21 +78,19 @@ public class TransferController {
 
     @PostMapping("/send")
     public Transfer sendMoney (@Valid @RequestBody TransferDto newTransferDto, Principal principal){
-        int userId = userDao.findIdByUsername(principal.getName());
+        int userFromId = userDao.findIdByUsername(principal.getName());
+        int userToId = newTransferDto.getUserToId();
         Transfer newTransfer = new Transfer();
 
-        // FIXME transfer id should be set automatically by postgres?
-        newTransfer.setTransferId(0);
         newTransfer.setTransferType(transferTypeRepo.findByTransferTypeDesc("Send"));
         newTransfer.setTransferStatus(transferStatusRepo.findByTransferStatusDesc("Approved"));
-        // FIXME this is returning nul)l
-        newTransfer.setAccountFrom(accountRepo.findById(userId));
-        // FIXME this is returning nul)l
-        newTransfer.setAccountTo(accountRepo.findById(newTransferDto.getAccountToId()));
+        newTransfer.setAccountFrom(accountRepo.findByUserId(userFromId));
+        newTransfer.setAccountTo(accountRepo.findByUserId(userToId));
         newTransfer.setAmount(newTransferDto.getAmount());
 
         // TODO validation goes here
 
         return transferRepo.save(newTransfer);
     }
+
 }

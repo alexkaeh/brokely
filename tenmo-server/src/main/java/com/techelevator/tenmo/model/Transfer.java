@@ -17,11 +17,11 @@ public class Transfer {
     @JoinColumn(name = "transfer_status_id")
     private TransferStatus transferStatus;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_from", referencedColumnName = "account_id")
     private Account accountFrom;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "account_to", referencedColumnName = "account_id")
     private Account accountTo;
 
@@ -35,6 +35,14 @@ public class Transfer {
 
     public Transfer(int transferId, TransferType transferType, TransferStatus transferStatus, Account accountFrom, Account accountTo, BigDecimal amount) {
         this.transferId = transferId;
+        this.transferType = transferType;
+        this.transferStatus = transferStatus;
+        this.accountFrom = accountFrom;
+        this.accountTo = accountTo;
+        this.amount = amount;
+    }
+
+    public Transfer(TransferType transferType, TransferStatus transferStatus, Account accountFrom, Account accountTo, BigDecimal amount) {
         this.transferType = transferType;
         this.transferStatus = transferStatus;
         this.accountFrom = accountFrom;

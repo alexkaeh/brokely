@@ -13,7 +13,7 @@ public class Account {
 //    private int userId;
     private BigDecimal balance;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="user_id", insertable = false, updatable = false)
     private User user;
 
