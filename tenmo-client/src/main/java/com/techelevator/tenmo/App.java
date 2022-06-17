@@ -97,12 +97,10 @@ public class App {
     }
 
 	private void viewCurrentBalance() {
-		// TODO Auto-generated method stub
         System.out.println(accountService.getBalance());
 	}
 
 	private void viewTransferHistory() {
-		// TODO Auto-generated method stub
         System.out.println(transferService.getAllTransfers());
 	}
 
@@ -112,7 +110,6 @@ public class App {
 	}
 
 	private void sendBucks() {
-		// TODO Auto-generated method stub
         UserDto[] users = userService.getUsers();
         consoleService.displayUsers(users);
 

@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="asdfaASDFasxvc">
+    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="remove 1 extra variable">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2022-06-16.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2022-06-16.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferInsertRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655425303800</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="remove 1 extra variable">
+      <created>1655430818275</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1655430818275</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -211,14 +214,15 @@
     <MESSAGE value="/transfer/id endpoint works!!!" />
     <MESSAGE value="did some work on the /save endpoint, halfway working" />
     <MESSAGE value="asdfaASDFasxvc" />
-    <option name="LAST_COMMIT_MESSAGE" value="asdfaASDFasxvc" />
+    <MESSAGE value="remove 1 extra variable" />
+    <option name="LAST_COMMIT_MESSAGE" value="remove 1 extra variable" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java</url>
-          <line>41</line>
+          <line>40</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
