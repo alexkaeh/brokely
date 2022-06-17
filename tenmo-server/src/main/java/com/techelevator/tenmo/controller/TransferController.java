@@ -99,7 +99,7 @@ public class TransferController {
 
         // TODO decrease balance
         Account sender = accountRepo.findByUserId(userFromId);
-        sender.setBalance(recipient.getBalance().subtract(amount));
+        sender.setBalance(sender.getBalance().subtract(amount));
         accountRepo.save(sender);
 
         return transferRepo.save(newTransfer);

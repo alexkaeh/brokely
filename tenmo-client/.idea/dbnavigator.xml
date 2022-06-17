@@ -29,7 +29,7 @@
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
     <connection id="adc88125-214d-4218-b9dc-d1a0e167130c">
-      <console name="tenmo" type="STANDARD" schema="public" session="Main"><![CDATA[select * from tranfer;]]></console>
+      <console name="tenmo" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
