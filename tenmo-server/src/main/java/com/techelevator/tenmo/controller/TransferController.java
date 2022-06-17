@@ -22,10 +22,9 @@ public class TransferController {
     private TransferTypeRepository transferTypeRepo;
     private TransferStatusRepository transferStatusRepo;
     private AccountRepository accountRepo;
-    private TransferInsertRepository transferInsertRepo;
 
     @Autowired
-    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao, TransferTypeRepository transferTypeRepo, TransferStatusRepository transferStatusRepo, AccountRepository accountRepo, TransferInsertRepository transferInsertRepo) {
+    public TransferController(TransferRepository transferRepo, JdbcUserDao userDao, TransferTypeRepository transferTypeRepo, TransferStatusRepository transferStatusRepo, AccountRepository accountRepo) {
         this.transferRepo = transferRepo;
         this.userDao = userDao;
         this.transferTypeRepo = transferTypeRepo;
@@ -36,9 +35,11 @@ public class TransferController {
 
     @GetMapping("")
     public List<TransferDto> getAllTransfers(Principal principal) {
+        int userId = userDao.findIdByUsername(principal.getName());
+        Account account = accountRepo.findByUserId(userId);
+
+        List<Transfer> transfers = transferRepo.findByAccountToOrAccountFrom(account, account);
         List<TransferDto> outputs = new ArrayList<>();
-        List<Transfer> transfers = transferRepo.findAll();
-        String name = principal.getName();
 
         for (Transfer transfer : transfers) {
             TransferDto transferDto = new TransferDto(
@@ -49,10 +50,7 @@ public class TransferController {
                     transfer.getAccountTo().getUser().getUsername(),
                     transfer.getAmount()
             );
-            // checks that from = user, or to = user, but not both
-            if (transferDto.getAccountFromName().equals(name) ^ transferDto.getAccountToName().equals(name)) {
-                outputs.add(transferDto);
-            }
+            outputs.add(transferDto);
         }
         return outputs;
     }
@@ -92,12 +90,12 @@ public class TransferController {
 
         // TODO validation goes here
 
-        // TODO increase recipient balance
+        // increase recipient balance
         Account recipient = accountRepo.findByUserId(userToId);
         recipient.setBalance(recipient.getBalance().add(amount));
         accountRepo.save(recipient);
 
-        // TODO decrease balance
+        // decrease sender balance
         Account sender = accountRepo.findByUserId(userFromId);
         sender.setBalance(sender.getBalance().subtract(amount));
         accountRepo.save(sender);
