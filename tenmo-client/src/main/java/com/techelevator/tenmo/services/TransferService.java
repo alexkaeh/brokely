@@ -29,7 +29,7 @@ public class TransferService extends ApiService {
 
     public BigDecimal sendMoney(int userToId, BigDecimal amount){
         TransferDto transfer = new TransferDto();
-        transfer.setUserToId(userToId);
+        transfer.setOtherUserInRequestId(userToId);
         transfer.setAmount(amount);
         BigDecimal balance;
         try {

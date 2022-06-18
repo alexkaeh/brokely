@@ -21,7 +21,7 @@ public class TransferDto {
     @Column(name="username", table = "tenmo_user")
     private String accountToName;
 
-    private int userToId;
+    private int otherUserInRequestId;
 
     private BigDecimal amount;
 
@@ -58,8 +58,8 @@ public class TransferDto {
         return this.accountToName;
     }
 
-    public int getUserToId() {
-        return this.userToId;
+    public int getOtherUserInRequestId() {
+        return this.otherUserInRequestId;
     }
 
     public BigDecimal getAmount() {
@@ -86,8 +86,8 @@ public class TransferDto {
         this.accountToName = accountToName;
     }
 
-    public void setUserToId(int userToId) {
-        this.userToId = userToId;
+    public void setOtherUserInRequestId(int otherUserInRequestId) {
+        this.otherUserInRequestId = otherUserInRequestId;
     }
 
     public void setAmount(BigDecimal amount) {
