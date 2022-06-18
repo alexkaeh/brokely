@@ -2,9 +2,9 @@ package com.techelevator.tenmo.services;
 
 public enum Url {
     BASE("http://localhost:8080/"),
-    USER(BASE.getPath() + "user/"),
-    ACCOUNT(BASE.getPath() + "account/"),
-    TRANSFER(BASE.getPath() + "transfer/");
+    USER(BASE + "user/"),
+    ACCOUNT(BASE + "account/"),
+    TRANSFER(BASE + "transfer/");
 
     private final String path;
 
@@ -12,7 +12,8 @@ public enum Url {
         this.path = path;
     }
 
-    public String getPath() {
+    @Override
+    public String toString() {
         return this.path;
     }
 }

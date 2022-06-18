@@ -12,7 +12,7 @@ public class AccountService extends ApiService {
 
 
     public AccountService() {
-        super(Url.ACCOUNT.getPath());
+        super(Url.ACCOUNT.toString());
     }
 
     //CHANGED TO BigDecimal

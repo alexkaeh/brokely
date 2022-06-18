@@ -12,7 +12,7 @@ import java.math.BigDecimal;
 public class TransferService extends ApiService {
 
     public TransferService() {
-        super(Url.TRANSFER.getPath());
+        super(Url.TRANSFER.toString());
     }
 
     public TransferDto[] getAllTransfers(){
@@ -32,8 +32,8 @@ public class TransferService extends ApiService {
         transfer.setUserToId(userToId);
         transfer.setAmount(amount);
         try {
-            HttpEntity<TransferDto> response = restTemplate.exchange(API_URL + "send", HttpMethod.POST, makeTransferDtoEntity(transfer), TransferDto.class);
-            transfer = response.getBody();
+            HttpEntity<TransferDto> response = restTemplate.exchange(API_URL + "send", HttpMethod.POST, makeDtoEntity(transfer), TransferDto.class);
+//            transfer = response.getBody();
             return true;
         } catch (RestClientException e) {
             BasicLogger.log(e.getMessage());
@@ -41,10 +41,4 @@ public class TransferService extends ApiService {
         }
     }
 
-    private HttpEntity<TransferDto> makeTransferDtoEntity(TransferDto transferDto) {
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-        headers.setBearerAuth(authToken);
-        return new HttpEntity<>(transferDto, headers);
-    }
 }

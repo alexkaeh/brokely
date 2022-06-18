@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 public class App {
 
-    private static final String API_BASE_URL = Url.BASE.getPath();
+    private static final String API_BASE_URL = Url.BASE.toString();
 
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);

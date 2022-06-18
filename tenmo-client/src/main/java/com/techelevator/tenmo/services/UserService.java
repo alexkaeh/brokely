@@ -14,7 +14,7 @@ public class UserService extends ApiService {
 //    protected String authToken = null;
 
     public UserService() {
-        super(Url.USER.getPath());
+        super(Url.USER.toString());
     }
 
     public UserDto[] getUsers() {
