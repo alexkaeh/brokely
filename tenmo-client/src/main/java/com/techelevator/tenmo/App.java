@@ -1,8 +1,6 @@
 package com.techelevator.tenmo;
 
-import com.techelevator.tenmo.model.AuthenticatedUser;
-import com.techelevator.tenmo.model.UserCredentials;
-import com.techelevator.tenmo.model.UserDto;
+import com.techelevator.tenmo.model.*;
 import com.techelevator.tenmo.services.*;
 
 import java.math.BigDecimal;
@@ -19,6 +17,7 @@ public class App {
     private final TransferService transferService = new TransferService();
 
     private AuthenticatedUser currentUser;
+    private Account currentAccount;
 
     public static void main(String[] args) {
         App app = new App();
@@ -69,6 +68,7 @@ public class App {
         else {
             //sets authToken for all services
             ApiService.setAuthToken(currentUser.getToken());
+            currentAccount = accountService.getCurrentAccount();
         }
     }
 
@@ -105,8 +105,11 @@ public class App {
 	}
 
 	private void viewPendingRequests() {
-		// TODO Auto-generated method stub
-		
+		// TODO TEST THIS LATER
+        TransferDto[] transferDtos = transferService.getPendingTransfers();
+        for(TransferDto td : transferDtos) {
+            System.out.println(td);
+        }
 	}
 
 	private void sendBucks() {
@@ -122,7 +125,12 @@ public class App {
         System.out.println("Enter amount: ");
         BigDecimal transferAmount = sc.nextBigDecimal();
 
-        transferService.sendMoney(recipientId,transferAmount);
+        BigDecimal updatedBalance = transferService.sendMoney(recipientId,transferAmount);
+        if(updatedBalance == null) {
+            updatedBalance = accountService.getBalance();
+        }
+
+        currentAccount.setBalance(updatedBalance);
 	}
 
 	private void requestBucks() {

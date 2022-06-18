@@ -27,18 +27,31 @@ public class TransferService extends ApiService {
         return transfers;
     }
 
-    public boolean sendMoney(int userToId, BigDecimal amount){
+    public BigDecimal sendMoney(int userToId, BigDecimal amount){
         TransferDto transfer = new TransferDto();
         transfer.setUserToId(userToId);
         transfer.setAmount(amount);
+        BigDecimal balance;
         try {
-            HttpEntity<TransferDto> response = restTemplate.exchange(API_URL + "send", HttpMethod.POST, makeDtoEntity(transfer), TransferDto.class);
-//            transfer = response.getBody();
-            return true;
+            HttpEntity<BigDecimal> response = restTemplate.exchange(Url.SEND.toString(), HttpMethod.POST, makeDtoEntity(transfer), BigDecimal.class);
+            balance = response.getBody();
+            return balance;
         } catch (RestClientException e) {
             BasicLogger.log(e.getMessage());
-            return false;
+            return null;
         }
+    }
+
+    public TransferDto[] getPendingTransfers() {
+        TransferDto[] transfers = null;
+        try {
+            ResponseEntity<TransferDto[]> response =
+                    restTemplate.exchange(Url.PENDING.toString(), HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
+            transfers = response.getBody();
+        } catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return transfers;
     }
 
 }

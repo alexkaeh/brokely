@@ -37,7 +37,7 @@ public class TransferController {
     }
 
     @PostMapping("/send")
-    public Transfer sendMoney (@Valid @RequestBody TransferDto newTransferDto, Principal principal) {
+    public BigDecimal sendMoney (@Valid @RequestBody TransferDto newTransferDto, Principal principal) {
         return transferLogic.sendMoney(newTransferDto, principal);
     }
 

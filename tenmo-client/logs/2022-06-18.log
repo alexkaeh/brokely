@@ -1,0 +1,5 @@
+2022-06-18T16:45:24.4705015 400 : [{"timestamp":"2022-06-18T21:45:24.346+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST \"User registration failed.\"\r\n\tat c... (8682 bytes)]
+2022-06-18T16:50:58.0789715 401 : [no body]
+2022-06-18T16:54:21.1985763 500 : [{"timestamp":"2022-06-18T21:54:21.185+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [2004] did not match expe... (16966 bytes)]
+2022-06-18T16:56:29.6864031 500 : [{"timestamp":"2022-06-18T21:56:29.660+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.InvalidDataAccessApiUsageException: Parameter value [2004] did not match expe... (16966 bytes)]
+2022-06-18T17:03:18.8818949 I/O error on POST request for "http://localhost:8080/login": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect

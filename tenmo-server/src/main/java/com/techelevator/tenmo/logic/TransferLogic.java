@@ -35,7 +35,7 @@ public class TransferLogic {
         this.accountRepo = accountRepo;
     }
 
-    public Transfer sendMoney (TransferDto newTransferDto, Principal principal) {
+    public BigDecimal sendMoney (TransferDto newTransferDto, Principal principal) {
         int userFromId = userDao.findIdByUsername(principal.getName());
         int userToId = newTransferDto.getUserToId();
         BigDecimal amount = newTransferDto.getAmount();
@@ -50,8 +50,9 @@ public class TransferLogic {
         // TODO validation goes here
 
         moveBucksBetweenAccounts(userToId, userFromId, amount);
+        transferRepo.save(newTransfer);
 
-        return transferRepo.save(newTransfer);
+        return accountRepo.findByUserId(userFromId).getBalance();
     }
 
     private boolean moveBucksBetweenAccounts(int userToId, int userFromId, BigDecimal amount) {
@@ -106,9 +107,10 @@ public class TransferLogic {
     public List<TransferDto> getPendingTransfers(Principal principal) {
         int userId = userDao.findIdByUsername(principal.getName());
 
-        List<Transfer> transfers = transferRepo.findByAccountToEqualsAndTransferStatusIdEquals(
-                accountRepo.findByUserId(userId).getAccountId(),
-                transferStatusRepo.findByTransferStatusDesc("Pending").getTransferStatusId());
+        List<Transfer> transfers = transferRepo.findByAccountToEqualsAndTransferStatusEquals(
+                accountRepo.findByUserId(userId),
+                transferStatusRepo.findByTransferStatusDesc("Pending")
+        );
         List<TransferDto> transferDtos = makeTransferIntoDto(transfers);
 
         return transferDtos;

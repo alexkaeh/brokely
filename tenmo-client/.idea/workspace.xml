@@ -5,20 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="tiny">
-      <change afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/Message.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/TransferLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2022_12_01_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_12_2022_12_01_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/AccountService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ApiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/TransferService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/Url.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/Url.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/APIService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/APIService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/TransferService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/TransferService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/TransferLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/TransferLogic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,6 +63,9 @@
     <option name="autoscrollToSource" value="true" />
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
