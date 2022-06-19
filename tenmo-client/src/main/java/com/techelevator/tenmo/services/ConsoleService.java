@@ -97,4 +97,15 @@ public class ConsoleService {
         }
         System.out.println("------------------------------------");
     }
+
+    public void displayRequestBucks(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("""
+                1: Approve
+                2: Reject
+                0: Don't approve or reject
+                ---------
+                Please choose an option: """);
+    }
+
 }
