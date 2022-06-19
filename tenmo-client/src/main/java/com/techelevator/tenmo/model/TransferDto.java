@@ -5,20 +5,20 @@ import java.math.BigDecimal;
 public class TransferDto implements Arrayable {
 
     private int transferId;
-    private String transferType;
-    private String transferStatus;
-    private String accountFrom;
-    private String accountTo;
-    private  int otherUserInRequestId;
+    private String transferTypeDesc;
+    private String transferStatusDesc;
+    private String accountFromName;
+    private String accountToName;
+    private int otherUserInRequestId;
 
     private BigDecimal amount;
 
     public TransferDto(int transferId, String transferType, String transferStatus, String accountFrom, String accountTo, int accountToId, BigDecimal amount) {
         this.transferId = transferId;
-        this.transferType = transferType;
-        this.transferStatus = transferStatus;
-        this.accountFrom = accountFrom;
-        this.accountTo = accountTo;
+        this.transferTypeDesc = transferType;
+        this.transferStatusDesc = transferStatus;
+        this.accountFromName = accountFrom;
+        this.accountToName = accountTo;
         this.otherUserInRequestId = accountToId;
         this.amount = amount;
     }
@@ -35,8 +35,8 @@ public class TransferDto implements Arrayable {
     public String[] toStringArray(String currentUser) {
         String[] arr = new String[4];
         arr[0] = "" + transferId;
-        arr[1] = accountFrom.equals(currentUser) ? "To" : "From";
-        arr[2] = accountFrom.equals(currentUser) ? accountTo : accountFrom;
+        arr[1] = accountFromName.equals(currentUser) ? "To" : "From";
+        arr[2] = accountFromName.equals(currentUser) ? accountToName : accountFromName;
         arr[3] = "$" + amount;
 
         return arr;
@@ -47,10 +47,10 @@ public class TransferDto implements Arrayable {
         StringBuilder sb = new StringBuilder();
 
         sb.append("Id: ").append(transferId);
-        sb.append("\nFrom: ").append(accountFrom);
-        sb.append("\nTo: ").append(accountFrom);
-        sb.append("\nType: ").append(transferType);
-        sb.append("\nStatus: ").append(transferStatus);
+        sb.append("\nFrom: ").append(accountFromName);
+        sb.append("\nTo: ").append(accountToName);
+        sb.append("\nType: ").append(transferTypeDesc);
+        sb.append("\nStatus: ").append(transferStatusDesc);
         sb.append("\nAmount: ").append(amount);
 
         return sb.toString();
@@ -60,20 +60,20 @@ public class TransferDto implements Arrayable {
         return this.transferId;
     }
 
-    public String getTransferType() {
-        return this.transferType;
+    public String getTransferTypeDesc() {
+        return this.transferTypeDesc;
     }
 
-    public String getTransferStatus() {
-        return this.transferStatus;
+    public String getTransferStatusDesc() {
+        return this.transferStatusDesc;
     }
 
-    public String getAccountFrom() {
-        return this.accountFrom;
+    public String getAccountFromName() {
+        return this.accountFromName;
     }
 
-    public String getAccountTo() {
-        return this.accountTo;
+    public String getAccountToName() {
+        return this.accountToName;
     }
 
     public int getOtherUserInRequestId() {
@@ -88,20 +88,20 @@ public class TransferDto implements Arrayable {
         this.transferId = transferId;
     }
 
-    public void setTransferType(String transferType) {
-        this.transferType = transferType;
+    public void setTransferTypeDesc(String transferTypeDesc) {
+        this.transferTypeDesc = transferTypeDesc;
     }
 
-    public void setTransferStatus(String transferStatus) {
-        this.transferStatus = transferStatus;
+    public void setTransferStatusDesc(String transferStatusDesc) {
+        this.transferStatusDesc = transferStatusDesc;
     }
 
-    public void setAccountFrom(String accountFrom) {
-        this.accountFrom = accountFrom;
+    public void setAccountFromName(String accountFromName) {
+        this.accountFromName = accountFromName;
     }
 
-    public void setAccountTo(String accountTo) {
-        this.accountTo = accountTo;
+    public void setAccountToName(String accountToName) {
+        this.accountToName = accountToName;
     }
 
     public void setOtherUserInRequestId(int otherUserInRequestId) {
