@@ -1,5 +1,6 @@
 package com.techelevator.tenmo.services;
 
+import com.techelevator.tenmo.model.Arrayable;
 import com.techelevator.tenmo.model.UserCredentials;
 import com.techelevator.tenmo.model.UserDto;
 
@@ -9,6 +10,30 @@ import java.util.Scanner;
 public class ConsoleService {
 
     private final Scanner scanner = new Scanner(System.in);
+
+    public void printTable(String[] headers, Arrayable[] objects, String currentUser) {
+        if(objects == null || objects.length == 0) {
+            return;
+        }
+
+        final int ROW_LENGTH = objects[0].toStringArray(currentUser).length;
+        final int CELL_WIDTH = 10;
+
+        for(String cell : headers) {
+            System.out.printf("|%-" + CELL_WIDTH + "s", cell);
+        }
+        System.out.println();
+
+        System.out.println("-".repeat((CELL_WIDTH + 1) * ROW_LENGTH));
+
+        for(Arrayable obj : objects) {
+            String[] currentRow = obj.toStringArray(currentUser);
+            for(String cell : currentRow) {
+                System.out.printf("|%-" + CELL_WIDTH + "s", cell);
+            }
+            System.out.println();
+        }
+    }
 
     public void printGreeting() {
         System.out.println("*********************");

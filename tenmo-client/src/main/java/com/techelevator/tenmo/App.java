@@ -101,7 +101,12 @@ public class App {
 	}
 
 	private void viewTransferHistory() {
-        System.out.println(transferService.getAllTransfers());
+//        System.out.println(transferService.getAllTransfers());
+        consoleService.printTable(
+                new String[]{"ID", "From/To", "", "Amount"},
+                transferService.getAllTransfers(),
+                currentUser.getUser().getUsername()
+        );
 	}
 
 	private void viewPendingRequests() {

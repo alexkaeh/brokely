@@ -2,7 +2,7 @@ package com.techelevator.tenmo.model;
 
 import java.math.BigDecimal;
 
-public class TransferDto {
+public class TransferDto implements Arrayable {
 
     private int transferId;
     private String transferType;
@@ -27,23 +27,32 @@ public class TransferDto {
     }
 
     @Override
-    public String toString(){
-        return toString(false);
+    public String[] toStringArray() {
+        return null;
     }
-    public String toString(boolean hasDetails){
+
+    @Override
+    public String[] toStringArray(String currentUser) {
+        String[] arr = new String[4];
+        arr[0] = "" + transferId;
+        arr[1] = accountFrom.equals(currentUser) ? "To" : "From";
+        arr[2] = accountFrom.equals(currentUser) ? accountTo : accountFrom;
+        arr[3] = "$" + amount;
+
+        return arr;
+    }
+
+    @Override
+    public String toString(){
         StringBuilder sb = new StringBuilder();
-        if(hasDetails){
-            sb.append("Id: ").append(transferId);
-            sb.append("\nFrom: ").append(accountFrom);
-            sb.append("\nTo: ").append(accountFrom);
-            sb.append("\nType: ").append(transferType);
-            sb.append("\nStatus: ").append(transferStatus);
-            sb.append("\nAmount: ").append(amount);
-            return sb.toString();
-        }
-        sb.append(transferId);
-        sb.append("\t\t").append("From: ").append(otherUserInRequestId);
-        sb.append("\t\t").append("$").append(amount);
+
+        sb.append("Id: ").append(transferId);
+        sb.append("\nFrom: ").append(accountFrom);
+        sb.append("\nTo: ").append(accountFrom);
+        sb.append("\nType: ").append(transferType);
+        sb.append("\nStatus: ").append(transferStatus);
+        sb.append("\nAmount: ").append(amount);
+
         return sb.toString();
     }
 
@@ -102,4 +111,5 @@ public class TransferDto {
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
 }
