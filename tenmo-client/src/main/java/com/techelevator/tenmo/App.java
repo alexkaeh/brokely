@@ -10,7 +10,7 @@ public class App {
 
     private static final String API_BASE_URL = Url.BASE.toString();
 
-    private final ConsoleService consoleService = new ConsoleService();
+    private final OldConsoleService oldConsoleService = new OldConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final UserService userService = new UserService();
     private final  AccountService accountService = new AccountService();
@@ -25,7 +25,7 @@ public class App {
     }
 
     private void run() {
-        consoleService.printGreeting();
+        oldConsoleService.printGreeting();
         loginMenu();
         if (currentUser != null) {
             mainMenu();
@@ -35,35 +35,35 @@ public class App {
     private void loginMenu() {
         int menuSelection = -1;
         while (menuSelection != 0 && currentUser == null) {
-            consoleService.printLoginMenu();
-            menuSelection = consoleService.promptForMenuSelection("Please choose an option: ");
+            oldConsoleService.printLoginMenu();
+            menuSelection = oldConsoleService.promptForMenuSelection("Please choose an option: ");
             if (menuSelection == 1) {
                 handleRegister();
             } else if (menuSelection == 2) {
                 handleLogin();
             } else if (menuSelection != 0) {
                 System.out.println("Invalid Selection");
-                consoleService.pause();
+                oldConsoleService.pause();
             }
         }
     }
 
     private void handleRegister() {
         System.out.println("Please register a new user account");
-        UserCredentials credentials = consoleService.promptForCredentials();
+        UserCredentials credentials = oldConsoleService.promptForCredentials();
         if (authenticationService.register(credentials)) {
             System.out.println("Registration successful. You can now login.");
         } else {
-            consoleService.printErrorMessage();
+            oldConsoleService.printErrorMessage();
         }
     }
 
     private void handleLogin() {
-        UserCredentials credentials = consoleService.promptForCredentials();
+        UserCredentials credentials = oldConsoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
 
         if (currentUser == null) {
-            consoleService.printErrorMessage();
+            oldConsoleService.printErrorMessage();
         }
         else {
             //sets authToken for all services
@@ -75,8 +75,8 @@ public class App {
     private void mainMenu() {
         int menuSelection = -1;
         while (menuSelection != 0) {
-            consoleService.printMainMenu();
-            menuSelection = consoleService.promptForMenuSelection("Please choose an option: ");
+            oldConsoleService.printMainMenu();
+            menuSelection = oldConsoleService.promptForMenuSelection("Please choose an option: ");
             if (menuSelection == 1) {
                 viewCurrentBalance();
             } else if (menuSelection == 2) {
@@ -92,7 +92,7 @@ public class App {
             } else {
                 System.out.println("Invalid Selection");
             }
-            consoleService.pause();
+            oldConsoleService.pause();
         }
     }
 
@@ -114,7 +114,7 @@ public class App {
 
 	private void sendBucks() {
         UserDto[] users = userService.getUsers();
-        consoleService.displayUsers(users);
+        oldConsoleService.displayUsers(users);
 
         //get recipient id
         Scanner sc = new Scanner(System.in);

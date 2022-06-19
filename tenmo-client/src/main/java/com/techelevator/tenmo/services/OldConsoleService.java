@@ -1,19 +1,50 @@
 package com.techelevator.tenmo.services;
 
+
 import com.techelevator.tenmo.model.UserCredentials;
 import com.techelevator.tenmo.model.UserDto;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
 
-public class ConsoleService {
+public class OldConsoleService {
 
     private final Scanner scanner = new Scanner(System.in);
+
+    public int promptForMenuSelection(String prompt) {
+        int menuSelection;
+        System.out.print(prompt);
+        try {
+            menuSelection = Integer.parseInt(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            menuSelection = -1;
+        }
+        return menuSelection;
+    }
 
     public void printGreeting() {
         System.out.println("*********************");
         System.out.println("* Welcome to TEnmo! *");
         System.out.println("*********************");
+    }
+
+    public void printLoginMenu() {
+        System.out.println();
+        System.out.println("1: Register");
+        System.out.println("2: Login");
+        System.out.println("0: Exit");
+        System.out.println();
+    }
+
+    public void printMainMenu() {
+        System.out.println();
+        System.out.println("1: View your current balance");
+        System.out.println("2: View your past transfers");
+        System.out.println("3: View your pending requests");
+        System.out.println("4: Send TE bucks");
+        System.out.println("5: Request TE bucks");
+        System.out.println("0: Exit");
+        System.out.println();
     }
 
     public UserCredentials promptForCredentials() {
@@ -67,37 +98,14 @@ public class ConsoleService {
         System.out.println("------------------------------------");
     }
 
-    public int getChoiceFromOptions(Object[] options) {
-        int choice = -1;
-        while (choice == -1) {
-            displayMenuOptions(options);
-            choice = getChoiceFromUserInput(options);
-        }
-        return choice;
-    }
-
-    private int getChoiceFromUserInput(Object[] options) {
-        System.out.print(System.lineSeparator() + "Please choose an option >>> ");
-        String userInput = scanner.nextLine();
-        try {
-            int selectedOption = Integer.parseInt(userInput);
-            if (selectedOption > 0 && selectedOption <= options.length) {
-                return selectedOption;
-            }
-        } catch (NumberFormatException e) {
-            System.out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator());
-        }
-        return -1;
-    }
-
-    public void displayMenuOptions(Object[] options) {
-        System.out.println();
-        for (int i = 1; i < options.length; i++) {
-            System.out.println(i + ": " + options[i]);
-        }
-        if(options[0] != null){
-            System.out.println("0: " + options[0]);
-        }
+    public void displayRequestBucks(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("""
+                1: Approve
+                2: Reject
+                0: Don't approve or reject
+                ---------
+                Please choose an option: """);
     }
 
 }
