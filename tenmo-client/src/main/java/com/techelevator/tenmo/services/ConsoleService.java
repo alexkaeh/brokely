@@ -77,11 +77,11 @@ public class ConsoleService {
     }
 
     private int getChoiceFromUserInput(Object[] options) {
-        System.out.print(System.lineSeparator() + "Please choose an option >>> ");
+        System.out.print(System.lineSeparator() + "Please choose an option: ");
         String userInput = scanner.nextLine();
         try {
             int selectedOption = Integer.parseInt(userInput);
-            if (selectedOption > 0 && selectedOption <= options.length) {
+            if (selectedOption >= 0 && selectedOption <= options.length) {
                 return selectedOption;
             }
         } catch (NumberFormatException e) {

@@ -1,5 +1,6 @@
 package com.techelevator.tenmo;
 
+import com.techelevator.tenmo.info.MenuArrays;
 import com.techelevator.tenmo.info.Url;
 import com.techelevator.tenmo.model.*;
 import com.techelevator.tenmo.services.*;
@@ -11,7 +12,7 @@ public class App {
 
     private static final String API_BASE_URL = Url.BASE.toString();
 
-    private final OldConsoleService oldConsoleService = new OldConsoleService();
+    private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final UserService userService = new UserService();
     private final  AccountService accountService = new AccountService();
@@ -26,7 +27,7 @@ public class App {
     }
 
     private void run() {
-        oldConsoleService.printGreeting();
+        consoleService.printGreeting();
         loginMenu();
         if (currentUser != null) {
             mainMenu();
@@ -36,35 +37,34 @@ public class App {
     private void loginMenu() {
         int menuSelection = -1;
         while (menuSelection != 0 && currentUser == null) {
-            oldConsoleService.printLoginMenu();
-            menuSelection = oldConsoleService.promptForMenuSelection("Please choose an option: ");
+            menuSelection = consoleService.getChoiceFromOptions(new String[]{"Exit", "Register", "Login"});
             if (menuSelection == 1) {
                 handleRegister();
             } else if (menuSelection == 2) {
                 handleLogin();
             } else if (menuSelection != 0) {
                 System.out.println("Invalid Selection");
-                oldConsoleService.pause();
+                consoleService.pause();
             }
         }
     }
 
     private void handleRegister() {
         System.out.println("Please register a new user account");
-        UserCredentials credentials = oldConsoleService.promptForCredentials();
+        UserCredentials credentials = consoleService.promptForCredentials();
         if (authenticationService.register(credentials)) {
             System.out.println("Registration successful. You can now login.");
         } else {
-            oldConsoleService.printErrorMessage();
+            consoleService.printErrorMessage();
         }
     }
 
     private void handleLogin() {
-        UserCredentials credentials = oldConsoleService.promptForCredentials();
+        UserCredentials credentials = consoleService.promptForCredentials();
         currentUser = authenticationService.login(credentials);
 
         if (currentUser == null) {
-            oldConsoleService.printErrorMessage();
+            consoleService.printErrorMessage();
         }
         else {
             //sets authToken for all services
@@ -76,24 +76,23 @@ public class App {
     private void mainMenu() {
         int menuSelection = -1;
         while (menuSelection != 0) {
-            oldConsoleService.printMainMenu();
-            menuSelection = oldConsoleService.promptForMenuSelection("Please choose an option: ");
-            if (menuSelection == 1) {
+            menuSelection = consoleService.getChoiceFromOptions(MenuArrays.MAIN_MENU_OPTIONS);
+            if (menuSelection == 1) { // "View your current balance"
                 viewCurrentBalance();
-            } else if (menuSelection == 2) {
+            } else if (menuSelection == 2) { // "View your past transfers"
                 viewTransferHistory();
-            } else if (menuSelection == 3) {
+            } else if (menuSelection == 3) { // "View your pending requests"
                 viewPendingRequests();
-            } else if (menuSelection == 4) {
+            } else if (menuSelection == 4) { // "Send TE bucks"
                 sendBucks();
-            } else if (menuSelection == 5) {
+            } else if (menuSelection == 5) { // "Request TE bucks"
                 requestBucks();
-            } else if (menuSelection == 0) {
+            } else if (menuSelection == 0) { // "Exit"
                 continue;
             } else {
                 System.out.println("Invalid Selection");
             }
-            oldConsoleService.pause();
+            consoleService.pause();
         }
     }
 
@@ -115,7 +114,7 @@ public class App {
 
 	private void sendBucks() {
         UserDto[] users = userService.getUsers();
-        oldConsoleService.displayUsers(users);
+        consoleService.displayUsers(users);
 
         //get recipient id
         Scanner sc = new Scanner(System.in);

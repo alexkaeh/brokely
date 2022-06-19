@@ -1,4 +1,14 @@
 package com.techelevator.tenmo.info;
 
-public class MenuArrays {
+public abstract class MenuArrays {
+
+    public static final String[] MAIN_MENU_OPTIONS = {
+            "Exit",
+            "View your current balance",
+            "View your past transfers",
+            "View your pending requests",
+            "Send TE bucks",
+            "Request TE bucks"
+    };
+
 }
