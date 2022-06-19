@@ -7,7 +7,10 @@ public enum Url {
         BALANCE(ACCOUNT + "balance/"),
     TRANSFER(BASE + "transfer/"),
         SEND(TRANSFER + "send/"),
-        PENDING(TRANSFER + "pending/");
+        REQUEST(TRANSFER + "request/"),
+        PENDING(TRANSFER + "pending/"),
+            APPROVE(PENDING + "approve/"),
+            REJECT(PENDING + "reject/");
 
     private final String path;
 

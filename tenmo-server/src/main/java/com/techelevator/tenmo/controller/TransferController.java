@@ -49,13 +49,13 @@ public class TransferController {
         return transferLogic.requestMoney(principal, newTransferDto);
     }
 
-    @PutMapping("/pending/{id}")
+    @PutMapping("/pending/approve/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public BigDecimal approveRequest(Principal principal, @PathVariable int transferId) {
         return transferLogic.approveRequest(principal, transferId);
     }
 
-    @PutMapping("/pending/{id}")
+    @PutMapping("/pending/reject/{id}")
     @ResponseStatus(HttpStatus.ACCEPTED)
     public boolean rejectRequest(Principal principal, @PathVariable int transferId) {
         return transferLogic.rejectRequest(principal, transferId);
