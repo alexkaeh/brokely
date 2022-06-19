@@ -1,4 +1,4 @@
-package com.techelevator.tenmo.services;
+package com.techelevator.tenmo.info;
 
 public enum Url {
     BASE("http://localhost:8080/"),
