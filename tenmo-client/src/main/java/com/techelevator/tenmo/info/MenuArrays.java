@@ -3,7 +3,6 @@ package com.techelevator.tenmo.info;
 public abstract class MenuArrays {
 
     public static final String[] MAIN_MENU_OPTIONS = {
-            "Exit",
             "View your current balance",
             "View your past transfers",
             "View your pending requests",

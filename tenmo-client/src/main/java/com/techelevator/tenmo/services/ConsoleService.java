@@ -93,10 +93,11 @@ public class ConsoleService {
     }
 
     public int getChoiceFromOptions(Object[] options) {
-        int choice = -1;
-        while (choice == -1) {
+        int choice = -2;
+        while (choice == -2) {
             displayMenuOptions(options);
             choice = getChoiceFromUserInput(options);
+            //-1 == exit || -2 == error
         }
         return choice;
     }
@@ -118,7 +119,7 @@ public class ConsoleService {
             System.out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator());
         }
         // Exit if user enters invalid input
-        return -1;
+        return -2;
     }
 
     public void displayMenuOptions(Object[] options) {

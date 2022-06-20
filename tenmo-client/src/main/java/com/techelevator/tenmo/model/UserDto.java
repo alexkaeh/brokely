@@ -19,6 +19,7 @@ public class UserDto implements Arrayable {
         return arr;
     }
 
+
     public int getId() {
         return id;
     }

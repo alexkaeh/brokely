@@ -37,12 +37,12 @@ public class App {
     private void loginMenu() {
         int menuSelection = -1;
         while (menuSelection != 0 && currentUser == null) {
-            menuSelection = consoleService.getChoiceFromOptions(new String[]{"Exit", "Register", "Login"});
-            if (menuSelection == 1) {
+            menuSelection = consoleService.getChoiceFromOptions(new String[]{"Register", "Login"});
+            if (menuSelection == 0) {
                 handleRegister();
-            } else if (menuSelection == 2) {
+            } else if (menuSelection == 1) {
                 handleLogin();
-            } else if (menuSelection != 0) {
+            } else if (menuSelection != -1) {
                 System.out.println("Invalid Selection");
                 consoleService.pause();
             }
@@ -73,20 +73,20 @@ public class App {
     }
 
     private void mainMenu() {
-        int menuSelection = -1;
-        while (menuSelection != 0) {
+        int menuSelection = -2;
+        while (menuSelection != -1) {
             menuSelection = consoleService.getChoiceFromOptions(MenuArrays.MAIN_MENU_OPTIONS);
-            if (menuSelection == 1) { // "View your current balance"
+            if (menuSelection == 0) { // "View your current balance"
                 viewCurrentBalance();
-            } else if (menuSelection == 2) { // "View your past transfers"
+            } else if (menuSelection == 1) { // "View your past transfers"
                 viewTransferHistory();
-            } else if (menuSelection == 3) { // "View your pending requests"
+            } else if (menuSelection == 2) { // "View your pending requests"
                 viewPendingRequests();
-            } else if (menuSelection == 4) { // "Send TE bucks"
+            } else if (menuSelection == 3) { // "Send TE bucks"
                 sendBucks();
-            } else if (menuSelection == 5) { // "Request TE bucks"
+            } else if (menuSelection == 4) { // "Request TE bucks"
                 requestBucks();
-            } else if (menuSelection == 0) { // "Exit"
+            } else if (menuSelection == -1) { // "Exit"
                 continue;
             } else {
                 System.out.println("Invalid Selection");
@@ -119,13 +119,18 @@ public class App {
     private void sendBucks() {
         UserDto[] users = userService.getUsers();
         // Get user to send money to
-        int selectedUserIndex = consoleService.getChoiceFromOptions(users);
+        consoleService.printTable(
+                new String[] {"ID","Name"},
+                users,
+                currentUser.getUser().getUsername()
+        );
+        int recipientId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
+
 
         //get transfer amount
         BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to be sent: ");
 
         // Use index to get userId, send to server, and return new balance
-        int recipientId = users[selectedUserIndex].getId();
         BigDecimal updatedBalance = transferService.sendMoney(recipientId, transferAmount);
 
 //        if (updatedBalance == null) {
