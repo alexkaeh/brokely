@@ -124,7 +124,7 @@ public class App {
                 users,
                 currentUser.getUser().getUsername()
         );
-        int recipientId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
+        int recipientId = consoleService.promptForInt("Enter ID of user you are sending to (0 to cancel): ");
 
 
         //get transfer amount
@@ -142,14 +142,20 @@ public class App {
 
     private void requestBucks() {
         UserDto[] users = userService.getUsers();
+
+        consoleService.printTable(
+                new String[] {"ID","Name"},
+                users,
+                currentUser.getUser().getUsername()
+        );
+
         // Get user to request money from
-        int selectedUserIndex = consoleService.getChoiceFromOptions(users);
+        int recipientId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
 
         //get transfer amount
         BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to request: ");
 
         // Use index to get userId, send to server, and return new balance
-        int recipientId = users[selectedUserIndex].getId();
         boolean wasSuccess = transferService.requestMoney(recipientId, transferAmount);
 
         if (!wasSuccess) {
