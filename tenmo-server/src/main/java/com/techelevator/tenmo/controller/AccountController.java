@@ -1,3 +1,6 @@
+/**
+ * Manages API access to Account table
+ */
 package com.techelevator.tenmo.controller;
 
 import com.techelevator.tenmo.dao.AccountRepository;
@@ -37,15 +40,13 @@ public class AccountController {
     public BigDecimal getBalance(Principal principal) {
         String name = principal.getName();
         int id = userDao.findIdByUsername(name);
-        Account acc = accountRepo.findByUserId(id);
-        return acc.getBalance();
+        return accountRepo.findByUserId(id).getBalance();
     }
 
     @GetMapping
     public Account getCurrentAccount(Principal principal) {
         String name = principal.getName();
         int id = userDao.findIdByUsername(name);
-        Account acc = accountRepo.findByUserId(id);
-        return acc;
+        return accountRepo.findByUserId(id);
     }
 }

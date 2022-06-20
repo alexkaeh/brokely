@@ -181,6 +181,7 @@ public class App {
 //        }
         // Update in memory balance
 
+        // Checks to see if balance has changed. If not, then the server did not fulfil the request.
         if(updatedBalance.equals(currentAccount.getBalance())) {
             System.out.println("Request failed.");
         }
@@ -199,12 +200,8 @@ public class App {
                 currentUser.getUser().getUsername()
         );
 
-        // Get user to request money from
         int recipientId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
-
-        //get transfer amount
         BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to request: ");
-
         // Use index to get userId, send to server, and return new balance
         boolean wasSuccess = transferService.requestMoney(recipientId, transferAmount);
 

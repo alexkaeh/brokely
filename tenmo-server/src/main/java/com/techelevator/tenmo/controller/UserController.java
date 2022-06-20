@@ -1,3 +1,6 @@
+/**
+ * Manages API access to User table
+ */
 package com.techelevator.tenmo.controller;
 
 import com.techelevator.tenmo.dao.AccountRepository;

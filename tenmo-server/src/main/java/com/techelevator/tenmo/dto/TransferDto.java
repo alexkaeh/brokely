@@ -1,3 +1,6 @@
+/**
+ * Special human read
+ */
 package com.techelevator.tenmo.dto;
 
 import javax.persistence.Column;

@@ -1,3 +1,6 @@
+/**
+ * This class is used to read and write to the console. It is used for all interactions with the user.
+ */
 package com.techelevator.tenmo.services;
 
 import com.techelevator.tenmo.model.Account;
@@ -18,26 +21,28 @@ public class ConsoleService {
             return;
         }
 
+        // Set the number of cells in each row based on the length of headers[]
         final int ROW_LENGTH = headers.length;
 
         for(String cell : headers) {
             System.out.printf("|%-" + CELL_WIDTH + "s", cell);
         }
-        System.out.println();
 
-        System.out.println("-".repeat((CELL_WIDTH + 1) * ROW_LENGTH));
+        // Print new line followed up repeating dash
+        System.out.println("\n" + "-".repeat((CELL_WIDTH) * ROW_LENGTH));
 
         for(Arrayable obj : objects) {
             if(obj == null) {
                 continue;
             }
             String[] currentRow = obj.toStringArray(currentUser);
-            // allows us to set a given object to null to skip
+
+            // The UserDto class will set the current user to null in objects array, so we skip it
             if(currentRow == null) {
                 continue;
             }
             for(String cell : currentRow) {
-                System.out.printf("|%-" + CELL_WIDTH + "s", cell);
+                System.out.printf("%-" + CELL_WIDTH + "s", cell);
             }
             System.out.println();
         }

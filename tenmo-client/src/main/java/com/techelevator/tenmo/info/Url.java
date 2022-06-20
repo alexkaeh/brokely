@@ -1,3 +1,7 @@
+/**
+ * This enum class contains a hierarchical list of all the urls used in the API
+ */
+
 package com.techelevator.tenmo.info;
 
 public enum Url {

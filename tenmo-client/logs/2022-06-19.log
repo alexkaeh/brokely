@@ -1,6 +1,5 @@
 2022-06-19T18:32:57.199355 I/O error on POST request for "http://localhost:8080/login": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
 2022-06-19T18:52:18.5552525 401 : [no body]
-2022-06-19T18:52:33.8137138 401 : [no body]
 2022-06-19T18:52:38.3601608 400 : [{"timestamp":"2022-06-19T23:52:38.343+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void... (10230 bytes)]
 2022-06-19T18:52:42.5922932 401 : [no body]
 2022-06-19T18:52:46.5402311 401 : [no body]

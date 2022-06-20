@@ -1,3 +1,8 @@
+/**
+ * RestTemplate methods for accessing the transfer table in our database. The workhorse of our client app.
+ *
+ *
+ */
 package com.techelevator.tenmo.services;
 
 import com.techelevator.tenmo.info.Url;
@@ -6,21 +11,36 @@ import com.techelevator.util.BasicLogger;
 import org.springframework.http.*;
 import org.springframework.web.client.ResourceAccessException;
 import org.springframework.web.client.RestClientException;
+
 import org.springframework.web.client.RestClientResponseException;
 
 import java.math.BigDecimal;
 
 public class TransferService extends ApiService {
 
+    //Super call to ApiService constructor, setting the API_URL field to our own specific URL from Url.
     public TransferService() {
         super(Url.TRANSFER.toString());
     }
+
 
     public TransferDto[] getAllTransfers(){
        TransferDto[] transfers = null;
         try {
             ResponseEntity<TransferDto[]> response =
                     restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
+            transfers = response.getBody();
+        } catch (RestClientResponseException | ResourceAccessException e) {
+            BasicLogger.log(e.getMessage());
+        }
+        return transfers;
+    }
+
+    public TransferDto[] getPendingTransfers() {
+        TransferDto[] transfers = null;
+        try {
+            ResponseEntity<TransferDto[]> response =
+                    restTemplate.exchange(Url.PENDING.toString(), HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
             transfers = response.getBody();
         } catch (RestClientResponseException | ResourceAccessException e) {
             BasicLogger.log(e.getMessage());
@@ -41,18 +61,6 @@ public class TransferService extends ApiService {
             BasicLogger.log(e.getMessage());
             return null;
         }
-    }
-
-    public TransferDto[] getPendingTransfers() {
-        TransferDto[] transfers = null;
-        try {
-            ResponseEntity<TransferDto[]> response =
-                    restTemplate.exchange(Url.PENDING.toString(), HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
-            transfers = response.getBody();
-        } catch (RestClientResponseException | ResourceAccessException e) {
-            BasicLogger.log(e.getMessage());
-        }
-        return transfers;
     }
 
     public Boolean requestMoney(int userFromId, BigDecimal amount){

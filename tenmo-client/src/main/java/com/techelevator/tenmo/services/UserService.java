@@ -1,3 +1,6 @@
+/**
+ * RestTemplate methods for accessing the User table in our database
+ */
 package com.techelevator.tenmo.services;
 
 import com.techelevator.tenmo.info.Url;
@@ -9,14 +12,11 @@ import org.springframework.web.client.RestClientResponseException;
 
 public class UserService extends ApiService {
 
-//    protected final String URL;
-//    protected RestTemplate restTemplate = new RestTemplate();
-//
-//    protected String authToken = null;
-
+    //Super call to ApiService, setting the API_URL field to our own specific URL from Url.
     public UserService() {
         super(Url.USER.toString());
     }
+
 
     public UserDto[] getUsers() {
         UserDto[] users = null;

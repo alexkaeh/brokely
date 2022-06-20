@@ -1,3 +1,9 @@
+/**
+ * This object is represents many joins being performed by the server to retrieve data from many tables, to create a
+ * human-readable version of the "transfer" table in our database.
+ *
+ *
+ */
 package com.techelevator.tenmo.model;
 
 import com.techelevator.tenmo.services.ConsoleService;
@@ -13,8 +19,10 @@ public class TransferDto implements Arrayable {
     private String transferStatusDesc;
     private String accountFromName;
     private String accountToName;
+    /* This is a special field that is only used to send info *TO* the server, and is never received *FROM* the server.
+    Using the auth token the server can always determine the current user's identity, so this is used when the user
+    needs to reference *another* user, such as when the current user is requesting or sending money. */
     private int otherUserInRequestId;
-
     private BigDecimal amount;
 
     public TransferDto(int transferId, String transferType, String transferStatus, String accountFrom, String accountTo, int accountToId, BigDecimal amount) {
@@ -30,6 +38,8 @@ public class TransferDto implements Arrayable {
     public TransferDto() {
     }
 
+
+    // This method is called by the ConsoleService#printTable method to create a formatted table of transfers for the user.
     @Override
     public String[] toStringArray(String currentUser) {
         String[] arr = new String[3];
@@ -40,6 +50,7 @@ public class TransferDto implements Arrayable {
         return arr;
     }
 
+    // This method is used when a single transfer is being displayed, and contains more detail.
     @Override
     public String toString(){
         StringBuilder sb = new StringBuilder();

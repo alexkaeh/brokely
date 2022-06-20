@@ -1,3 +1,6 @@
+/**
+ * RestTemplate methods for accessing the Account table in our database
+ */
 package com.techelevator.tenmo.services;
 
 import com.techelevator.tenmo.info.Url;

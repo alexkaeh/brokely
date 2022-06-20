@@ -1,3 +1,6 @@
+/**
+ * Manages API access to Transfer table. All business logic is delegated to TransferLogic.
+ */
 package com.techelevator.tenmo.controller;
 
 import com.techelevator.tenmo.logic.TransferLogic;
