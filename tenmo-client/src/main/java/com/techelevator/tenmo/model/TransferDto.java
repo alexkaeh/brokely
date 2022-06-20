@@ -1,6 +1,10 @@
 package com.techelevator.tenmo.model;
 
+import com.techelevator.tenmo.services.ConsoleService;
+
 import java.math.BigDecimal;
+
+import static com.techelevator.tenmo.services.ConsoleService.CELL_WIDTH;
 
 public class TransferDto implements Arrayable {
 
@@ -33,11 +37,10 @@ public class TransferDto implements Arrayable {
 
     @Override
     public String[] toStringArray(String currentUser) {
-        String[] arr = new String[4];
+        String[] arr = new String[3];
         arr[0] = "" + transferId;
-        arr[1] = accountFromName.equals(currentUser) ? "To" : "From";
-        arr[2] = accountFromName.equals(currentUser) ? accountToName : accountFromName;
-        arr[3] = "$" + amount;
+        arr[1] = accountFromName.equals(currentUser) ? "To: " + accountToName : "From: " + accountFromName;
+        arr[2] = String.format("%" + ConsoleService.CELL_WIDTH + "s", "$" + amount);
 
         return arr;
     }

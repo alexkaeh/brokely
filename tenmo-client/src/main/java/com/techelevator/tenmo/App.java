@@ -15,7 +15,7 @@ public class App {
     private final ConsoleService consoleService = new ConsoleService();
     private final AuthenticationService authenticationService = new AuthenticationService(API_BASE_URL);
     private final UserService userService = new UserService();
-    private final  AccountService accountService = new AccountService();
+    private final AccountService accountService = new AccountService();
     private final TransferService transferService = new TransferService();
 
     private AuthenticatedUser currentUser;
@@ -65,8 +65,7 @@ public class App {
 
         if (currentUser == null) {
             consoleService.printErrorMessage();
-        }
-        else {
+        } else {
             //sets authToken for all services
             ApiService.setAuthToken(currentUser.getToken());
             currentAccount = accountService.getCurrentAccount();
@@ -96,50 +95,60 @@ public class App {
         }
     }
 
-	private void viewCurrentBalance() {
+    private void viewCurrentBalance() {
         System.out.println(accountService.getBalance());
-	}
+    }
 
-	private void viewTransferHistory() {
+    private void viewTransferHistory() {
 //        System.out.println(transferService.getAllTransfers());
         consoleService.printTable(
-                new String[]{"ID", "From/To", "", "Amount"},
+                new String[]{"ID", "From/To", "Amount"},
                 transferService.getAllTransfers(),
                 currentUser.getUser().getUsername()
         );
-	}
+    }
 
-	private void viewPendingRequests() {
-		// TODO TEST THIS LATER
-        TransferDto[] transferDtos = transferService.getPendingTransfers();
-        for(TransferDto td : transferDtos) {
-            System.out.println(td);
-        }
-	}
+    private void viewPendingRequests() {
+        consoleService.printTable(
+                new String[]{"ID", "To", "Amount"},
+                transferService.getAllTransfers(),
+                currentUser.getUser().getUsername()
+        );
+    }
 
-	private void sendBucks() {
+    private void sendBucks() {
         UserDto[] users = userService.getUsers();
-        consoleService.displayUsers(users);
-
-        //get recipient id
-        Scanner sc = new Scanner(System.in);
-        System.out.println("\nEnter ID of user you are requesting from (0 to cancel): ");
-        int recipientId = sc.nextInt();
+        // Get user to send money to
+        int selectedUserIndex = consoleService.getChoiceFromOptions(users);
 
         //get transfer amount
-        System.out.println("Enter amount: ");
-        BigDecimal transferAmount = sc.nextBigDecimal();
+        BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to be sent: ");
 
-        BigDecimal updatedBalance = transferService.sendMoney(recipientId,transferAmount);
-        if(updatedBalance == null) {
-            updatedBalance = accountService.getBalance();
-        }
+        // Use index to get userId, send to server, and return new balance
+        int recipientId = users[selectedUserIndex].getId();
+        BigDecimal updatedBalance = transferService.sendMoney(recipientId, transferAmount);
 
+//        if (updatedBalance == null) {
+//            updatedBalance = accountService.getBalance();
+//        }
+        // Update in memory balance
         currentAccount.setBalance(updatedBalance);
-	}
+    }
 
-	private void requestBucks() {
-		// TODO Auto-generated method stub
+    private void requestBucks() {
+        UserDto[] users = userService.getUsers();
+        // Get user to request money from
+        int selectedUserIndex = consoleService.getChoiceFromOptions(users);
 
+        //get transfer amount
+        BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to request: ");
+
+        // Use index to get userId, send to server, and return new balance
+        int recipientId = users[selectedUserIndex].getId();
+        boolean wasSuccess = transferService.requestMoney(recipientId, transferAmount);
+
+        if (!wasSuccess) {
+            System.out.println("Request failed.");
+        }
     }
 }

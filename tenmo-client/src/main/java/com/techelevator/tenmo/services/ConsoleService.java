@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class ConsoleService {
 
     private final Scanner scanner = new Scanner(System.in);
+    public static final int CELL_WIDTH = 16;
 
     public void printTable(String[] headers, Arrayable[] objects, String currentUser) {
         if(objects == null || objects.length == 0) {
@@ -17,7 +18,6 @@ public class ConsoleService {
         }
 
         final int ROW_LENGTH = objects[0].toStringArray(currentUser).length;
-        final int CELL_WIDTH = 10;
 
         for(String cell : headers) {
             System.out.printf("|%-" + CELL_WIDTH + "s", cell);
@@ -69,7 +69,7 @@ public class ConsoleService {
             try {
                 return new BigDecimal(scanner.nextLine());
             } catch (NumberFormatException e) {
-                System.out.println("Please enter a decimal number.");
+                System.out.print("Please enter a valid decimal number.");
             }
         }
     }
@@ -106,23 +106,27 @@ public class ConsoleService {
         String userInput = scanner.nextLine();
         try {
             int selectedOption = Integer.parseInt(userInput);
-            if (selectedOption >= 0 && selectedOption <= options.length) {
-                return selectedOption;
+            // 0 always exits
+            if (selectedOption == 0) {
+                return -1;
+            }
+            // Option must be in valid bounds
+            if (selectedOption > 0 && selectedOption <= options.length) {
+                return selectedOption - 1;
             }
         } catch (NumberFormatException e) {
             System.out.println(System.lineSeparator() + "*** " + userInput + " is not a valid option ***" + System.lineSeparator());
         }
+        // Exit if user enters invalid input
         return -1;
     }
 
     public void displayMenuOptions(Object[] options) {
         System.out.println();
-        for (int i = 1; i < options.length; i++) {
-            System.out.println(i + ": " + options[i]);
+        for (int i = 0; i < options.length; i++) {
+            System.out.println((i + 1) + ": " + options[i]);
         }
-        if(options[0] != null){
-            System.out.println("0: " + options[0]);
-        }
+        System.out.println("0: Exit");
     }
 
 }
