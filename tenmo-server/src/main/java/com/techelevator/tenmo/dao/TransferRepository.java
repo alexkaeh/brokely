@@ -6,8 +6,6 @@ import com.techelevator.tenmo.model.TransferStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 @Repository
@@ -17,6 +15,6 @@ public interface TransferRepository extends JpaRepository<Transfer, Integer> {
 
     List<Transfer> findByAccountToOrAccountFrom(Account accFrom, Account accTo);
 
-    List<Transfer> findByAccountToEqualsAndTransferStatusEquals(Account accTo, TransferStatus transferStatus);
+    List<Transfer> findByAccountFromEqualsAndTransferStatusEquals(Account accTo, TransferStatus transferStatus);
 
 }

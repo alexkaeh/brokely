@@ -31,11 +31,6 @@ public class TransferDto implements Arrayable {
     }
 
     @Override
-    public String[] toStringArray() {
-        return null;
-    }
-
-    @Override
     public String[] toStringArray(String currentUser) {
         String[] arr = new String[3];
         arr[0] = "" + transferId;

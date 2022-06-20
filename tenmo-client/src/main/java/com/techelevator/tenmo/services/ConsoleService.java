@@ -1,5 +1,6 @@
 package com.techelevator.tenmo.services;
 
+import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.Arrayable;
 import com.techelevator.tenmo.model.UserCredentials;
 import com.techelevator.tenmo.model.UserDto;
@@ -13,11 +14,11 @@ public class ConsoleService {
     public static final int CELL_WIDTH = 16;
 
     public void printTable(String[] headers, Arrayable[] objects, String currentUser) {
-        if(objects == null || objects.length == 0) {
+        if(headers == null || objects == null || objects.length == 0) {
             return;
         }
 
-        final int ROW_LENGTH = objects[0].toStringArray(currentUser).length;
+        final int ROW_LENGTH = headers.length;
 
         for(String cell : headers) {
             System.out.printf("|%-" + CELL_WIDTH + "s", cell);
@@ -27,12 +28,23 @@ public class ConsoleService {
         System.out.println("-".repeat((CELL_WIDTH + 1) * ROW_LENGTH));
 
         for(Arrayable obj : objects) {
+            if(obj == null) {
+                continue;
+            }
             String[] currentRow = obj.toStringArray(currentUser);
+            // allows us to set a given object to null to skip
+            if(currentRow == null) {
+                continue;
+            }
             for(String cell : currentRow) {
                 System.out.printf("|%-" + CELL_WIDTH + "s", cell);
             }
             System.out.println();
         }
+    }
+
+    public void printCurrentBalance(Account currentAccount) {
+        System.out.println("Current balance: $" + currentAccount.getBalance());
     }
 
     public void printGreeting() {

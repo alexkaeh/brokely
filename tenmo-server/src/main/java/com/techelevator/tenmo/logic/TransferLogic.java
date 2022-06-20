@@ -67,7 +67,7 @@ public class TransferLogic {
     public List<TransferDto> getPendingTransfers(Principal principal) {
         int userId = userDao.findIdByUsername(principal.getName());
 
-        List<Transfer> transfers = transferRepo.findByAccountToEqualsAndTransferStatusEquals(
+        List<Transfer> transfers = transferRepo.findByAccountFromEqualsAndTransferStatusEquals(
                 accountRepo.findByUserId(userId),
                 transferStatusRepo.findByTransferStatusDesc("Pending")
         );

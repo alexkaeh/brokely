@@ -7,11 +7,12 @@ public class UserDto implements Arrayable {
 
     @Override
     public String[] toStringArray(String currentUser) {
-        return toStringArray();
-    }
 
-    @Override
-    public String[] toStringArray() {
+        //
+        if(this.username.equals(currentUser)) {
+            return null;
+        }
+
         String[] arr = new String[2];
         arr[0] = "" + id;
         arr[1] = username;

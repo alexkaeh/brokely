@@ -100,7 +100,13 @@ public class App {
     }
 
     private void viewTransferHistory() {
-//        System.out.println(transferService.getAllTransfers());
+        TransferDto[] transfers = transferService.getAllTransfers();
+
+        if(transfers == null || transfers.length == 0) {
+            System.out.println("No transfers found.");
+            return;
+        }
+
         consoleService.printTable(
                 new String[]{"ID", "From/To", "Amount"},
                 transferService.getAllTransfers(),
@@ -109,11 +115,48 @@ public class App {
     }
 
     private void viewPendingRequests() {
+        TransferDto[] pendingTransfers = transferService.getPendingTransfers();
+
+        if(pendingTransfers == null || pendingTransfers.length == 0) {
+            System.out.println("No pending transfers found.");
+            return;
+        }
+
         consoleService.printTable(
                 new String[]{"ID", "To", "Amount"},
-                transferService.getAllTransfers(),
+                pendingTransfers,
                 currentUser.getUser().getUsername()
         );
+
+        // prompt to approve or reject
+        int transferId = consoleService.promptForInt("Please enter transfer ID to approve/reject (0 to cancel): ");
+
+        if(transferId == 0) {
+            return;
+        }
+
+        consoleService.printCurrentBalance(currentAccount);
+
+        int choice = consoleService.getChoiceFromOptions(new String[]{"Approve", "Reject"});
+
+        if(choice == 0) {
+            BigDecimal updatedBalance = transferService.approveRequest(transferId);
+
+            if(updatedBalance.equals(currentAccount.getBalance())) {
+                System.out.println("Request failed.");
+                return;
+            }
+
+            currentAccount.setBalance(updatedBalance);
+            consoleService.printCurrentBalance(currentAccount);
+        } else if(choice == 1) {
+            boolean successfulReject = transferService.rejectRequest(transferId);
+            if(successfulReject) {
+                System.out.println("Transfer rejected.");
+            } else {
+                System.out.println("Request failed.");
+            }
+        }
     }
 
     private void sendBucks() {
@@ -137,7 +180,14 @@ public class App {
 //            updatedBalance = accountService.getBalance();
 //        }
         // Update in memory balance
+
+        if(updatedBalance.equals(currentAccount.getBalance())) {
+            System.out.println("Request failed.");
+        }
+
         currentAccount.setBalance(updatedBalance);
+
+        consoleService.printCurrentBalance(currentAccount);
     }
 
     private void requestBucks() {

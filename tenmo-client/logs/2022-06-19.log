@@ -17,3 +17,12 @@
 2022-06-19T20:40:33.1590479 401 : [no body]
 2022-06-19T20:41:02.9010279 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
  at [Source: (PushbackInputStream); line: 1, column: 1]
+2022-06-19T20:46:50.762 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2022-06-19T20:55:57.1057176 401 : [no body]
+2022-06-19T21:37:51.4810715 500 : [{"timestamp":"2022-06-20T02:37:51.323+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.web.bind.MissingPathVariableException: Missing URI template variable 'transferId'... (8956 bytes)]
+2022-06-19T21:39:41.0940512 500 : [{"timestamp":"2022-06-20T02:39:41.072+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.web.bind.MissingPathVariableException: Missing URI template variable 'transferId'... (8956 bytes)]
+2022-06-19T21:41:29.6718983 500 : [{"timestamp":"2022-06-20T02:41:29.649+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.web.bind.MissingPathVariableException: Missing URI template variable 'transferId'... (8956 bytes)]
+2022-06-19T21:43:00.3168561 500 : [{"timestamp":"2022-06-20T02:43:00.184+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.web.bind.MissingPathVariableException: Missing URI template variable 'transferId'... (8956 bytes)]
+2022-06-19T21:45:12.2221308 500 : [{"timestamp":"2022-06-20T02:45:12.161+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.web.bind.MissingPathVariableException: Missing URI template variable 'transferId'... (8956 bytes)]
+2022-06-19T21:53:43.9627028 401 : [no body]

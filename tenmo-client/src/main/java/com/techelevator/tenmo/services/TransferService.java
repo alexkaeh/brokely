@@ -61,7 +61,7 @@ public class TransferService extends ApiService {
         transfer.setAmount(amount);
 
         try {
-            HttpEntity<Boolean> response = restTemplate.exchange(Url.SEND.toString(), HttpMethod.POST, makeDtoEntity(transfer), Boolean.class);
+            HttpEntity<Boolean> response = restTemplate.exchange(Url.REQUEST.toString(), HttpMethod.POST, makeDtoEntity(transfer), Boolean.class);
             return true;
         } catch (RestClientException e) {
             BasicLogger.log(e.getMessage());
