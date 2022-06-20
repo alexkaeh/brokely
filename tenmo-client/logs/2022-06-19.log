@@ -11,3 +11,9 @@
 2022-06-19T20:05:51.9323144 400 : [{"timestamp":"2022-06-20T01:05:51.885+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST \"User registration failed.\"\r\n\tat c... (8682 bytes)]
 2022-06-19T20:32:17.6481954 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
  at [Source: (PushbackInputStream); line: 1, column: 1]
+2022-06-19T20:37:03.181422 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
+2022-06-19T20:40:18.7811617 401 : [no body]
+2022-06-19T20:40:33.1590479 401 : [no body]
+2022-06-19T20:41:02.9010279 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]

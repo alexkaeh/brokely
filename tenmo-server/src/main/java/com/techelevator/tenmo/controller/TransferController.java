@@ -45,7 +45,7 @@ public class TransferController {
     }
 
     @PostMapping("/request")
-    public boolean requestMoney(@Valid @RequestBody TransferDto newTransferDto, Principal principal) {
+    public Boolean requestMoney(@Valid @RequestBody TransferDto newTransferDto, Principal principal) {
         return transferLogic.requestMoney(principal, newTransferDto);
     }
 

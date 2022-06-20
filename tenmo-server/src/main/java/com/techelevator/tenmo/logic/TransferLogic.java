@@ -94,7 +94,7 @@ public class TransferLogic {
         return accountRepo.findByUserId(userFromId).getBalance();
     }
 
-    public boolean requestMoney(Principal principal, TransferDto newTransferDto) {
+    public Boolean requestMoney(Principal principal, TransferDto newTransferDto) {
         int userToId = userDao.findIdByUsername(principal.getName());
         int userFromId = newTransferDto.getOtherUserInRequestId();
         if (userFromId == userToId) {

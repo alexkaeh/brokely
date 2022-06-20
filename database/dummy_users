@@ -1,0 +1,23 @@
+insert into tenmo_user (username, password_hash)
+values('mike', '$2a$10$LRlsT1.uzfi5LSah98.h2OGaaJ67P.o6jCcS.EVjKh0ZgKaeEeF4W');
+
+insert into tenmo_user (username, password_hash)
+values('bill', '$2a$10$LRlsT1.uzfi5LSah98.h2OGaaJ67P.o6jCcS.EVjKh0ZgKaeEeF4W');
+
+insert into tenmo_user (username, password_hash)
+values('jill', '$2a$10$LRlsT1.uzfi5LSah98.h2OGaaJ67P.o6jCcS.EVjKh0ZgKaeEeF4W');
+
+insert into tenmo_user (username, password_hash)
+values('liz', '$2a$10$LRlsT1.uzfi5LSah98.h2OGaaJ67P.o6jCcS.EVjKh0ZgKaeEeF4W');
+
+insert into account (user_id, balance)
+values((select user_id from tenmo_user where username = 'mike'),1000.00);
+
+insert into account (user_id, balance)
+values((select user_id from tenmo_user where username = 'bill'),1000.00);
+
+insert into account (user_id, balance)
+values((select user_id from tenmo_user where username = 'jill'),1000.00);
+
+insert into account (user_id, balance)
+values((select user_id from tenmo_user where username = 'liz'),1000.00);

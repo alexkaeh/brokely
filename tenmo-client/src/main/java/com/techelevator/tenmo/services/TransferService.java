@@ -55,7 +55,7 @@ public class TransferService extends ApiService {
         return transfers;
     }
 
-    public boolean requestMoney(int userFromId, BigDecimal amount){
+    public Boolean requestMoney(int userFromId, BigDecimal amount){
         TransferDto transfer = new TransferDto();
         transfer.setOtherUserInRequestId(userFromId);
         transfer.setAmount(amount);
