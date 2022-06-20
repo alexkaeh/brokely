@@ -1,0 +1,13 @@
+2022-06-19T18:32:57.199355 I/O error on POST request for "http://localhost:8080/login": Connection refused: connect; nested exception is java.net.ConnectException: Connection refused: connect
+2022-06-19T18:52:18.5552525 401 : [no body]
+2022-06-19T18:52:33.8137138 401 : [no body]
+2022-06-19T18:52:38.3601608 400 : [{"timestamp":"2022-06-19T23:52:38.343+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public void... (10230 bytes)]
+2022-06-19T18:52:42.5922932 401 : [no body]
+2022-06-19T18:52:46.5402311 401 : [no body]
+2022-06-19T18:53:12.5370708 500 : [{"timestamp":"2022-06-19T23:53:12.533+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; cons... (17680 bytes)]
+2022-06-19T19:56:18.6300023 500 : [{"timestamp":"2022-06-20T00:56:18.302+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; cons... (17680 bytes)]
+2022-06-19T19:59:39.5821509 500 : [{"timestamp":"2022-06-20T00:59:39.564+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; cons... (17566 bytes)]
+2022-06-19T20:03:11.7469111 500 : [{"timestamp":"2022-06-20T01:03:11.730+00:00","status":500,"error":"Internal Server Error","trace":"java.lang.NullPointerException: Cannot invoke \"com.techelevator.tenmo.model.Account.getBalance()\" b... (10196 bytes)]
+2022-06-19T20:05:51.9323144 400 : [{"timestamp":"2022-06-20T01:05:51.885+00:00","status":400,"error":"Bad Request","trace":"org.springframework.web.server.ResponseStatusException: 400 BAD_REQUEST \"User registration failed.\"\r\n\tat c... (8682 bytes)]
+2022-06-19T20:32:17.6481954 Error while extracting response for type [class java.lang.Boolean] and content type [application/json]; nested exception is org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token; nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize instance of `java.lang.Boolean` out of VALUE_NUMBER_FLOAT token
+ at [Source: (PushbackInputStream); line: 1, column: 1]
