@@ -3,10 +3,7 @@
  */
 package com.techelevator.tenmo.services;
 
-import com.techelevator.tenmo.model.Account;
-import com.techelevator.tenmo.model.Arrayable;
-import com.techelevator.tenmo.model.UserCredentials;
-import com.techelevator.tenmo.model.UserDto;
+import com.techelevator.tenmo.model.*;
 
 import java.math.BigDecimal;
 import java.util.Scanner;
@@ -53,9 +50,9 @@ public class ConsoleService {
     }
 
     public void printGreeting() {
-        System.out.println("*********************");
-        System.out.println("* Welcome to TEnmo! *");
-        System.out.println("*********************");
+        System.out.println("************************");
+        System.out.println("* Welcome to broke.ly! *");
+        System.out.println("************************");
     }
 
     public UserCredentials promptForCredentials() {
@@ -107,6 +104,11 @@ public class ConsoleService {
             System.out.println(user.getId() + "\t" + user.getUsername());
         }
         System.out.println("------------------------------------");
+    }
+
+    public void displayTransferDetails(TransferDto transferDto) {
+        System.out.println("\n------------------------------------\nTransfer Details\n------------------------------------");
+        System.out.println(transferDto);
     }
 
     public int getChoiceFromOptions(Object[] options) {

@@ -81,7 +81,6 @@ public class App {
                 consoleService.pause();
             } else if (menuSelection == 1) { // "View your past transfers"
                 viewTransferHistory();
-                consoleService.pause();
             } else if (menuSelection == 2) { // "View your pending requests"
                 viewPendingRequests();
                 consoleService.pause();
@@ -94,7 +93,6 @@ public class App {
             } else {
                 System.out.println("Invalid Selection");
             }
-//            consoleService.pause();
         }
     }
 
@@ -115,6 +113,21 @@ public class App {
                 transferService.getAllTransfers(),
                 currentUser.getUser().getUsername()
         );
+
+        int transferId = consoleService.promptForInt("Please enter transfer ID to view details (0 to cancel): ");
+        // check for 0 to cancel
+        if(transferId == 0) {
+            return;
+        }
+
+        TransferDto selectedTransfer = transferService.getTransferById(transferId);
+        if(selectedTransfer == null) {
+            consoleService.printErrorMessage();
+        } else {
+            consoleService.displayTransferDetails(selectedTransfer);
+        }
+
+        consoleService.pause();
     }
 
     private void viewPendingRequests() {
@@ -134,7 +147,8 @@ public class App {
         // prompt to approve or reject
         int transferId = consoleService.promptForInt("Please enter transfer ID to approve/reject (0 to cancel): ");
 
-        if (transferId == 0) {
+        // check for 0 to cancel
+        if(transferId == 0) {
             return;
         }
 

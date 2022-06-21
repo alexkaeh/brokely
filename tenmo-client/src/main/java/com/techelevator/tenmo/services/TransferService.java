@@ -22,6 +22,19 @@ public class TransferService extends ApiService {
     }
 
 
+    public TransferDto getTransferById(int transferId) {
+        TransferDto transfer = null;
+
+        try {
+            HttpEntity<TransferDto> response = restTemplate.exchange(Url.TRANSFER.toString() + transferId, HttpMethod.GET, makeAuthEntity(), TransferDto.class);
+            transfer = response.getBody();
+        } catch (RestClientException e) {
+            BasicLogger.log(e.getMessage());
+        }
+
+        return transfer;
+    }
+
     public TransferDto[] getAllTransfers() {
         TransferDto[] transfers = null;
         try {
