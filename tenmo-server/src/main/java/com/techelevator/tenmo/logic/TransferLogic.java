@@ -5,6 +5,7 @@ import com.techelevator.tenmo.dto.TransferDto;
 import com.techelevator.tenmo.model.Account;
 import com.techelevator.tenmo.model.Transfer;
 import com.techelevator.tenmo.model.TransferStatus;
+import com.techelevator.tenmo.model.TransferType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,8 +59,13 @@ public class TransferLogic {
     public List<TransferDto> getAllTransfers(Principal principal) {
         int userId = userDao.findIdByUsername(principal.getName());
         Account account = accountRepo.findByUserId(userId);
+        TransferStatus pending = transferStatusRepo.findByTransferStatusDesc("Pending");
 
-        List<Transfer> transfers = transferRepo.findByAccountToOrAccountFrom(account, account);
+        // Filters out pending transfers, or transfers not sent or received by current user
+        // Logic is as follows:
+        // (accountTo = user && transferStatus = pending) || (accountFrom = user && transferStatus = pending)
+        List<Transfer> transfers = transferRepo
+                .findByAccountToAndTransferStatusIsNotOrAccountFromAndTransferStatusIsNot(account, pending, account, pending);
 
         return makeTransferIntoDto(transfers);
     }

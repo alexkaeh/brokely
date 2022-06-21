@@ -13,8 +13,7 @@ public interface TransferRepository extends JpaRepository<Transfer, Integer> {
 
     Transfer findByTransferId(int id);
 
-    List<Transfer> findByAccountToOrAccountFrom(Account accFrom, Account accTo);
-
     List<Transfer> findByAccountFromEqualsAndTransferStatusEquals(Account accTo, TransferStatus transferStatus);
 
+    List<Transfer> findByAccountToAndTransferStatusIsNotOrAccountFromAndTransferStatusIsNot(Account account, TransferStatus status, Account account1, TransferStatus status1);
 }
