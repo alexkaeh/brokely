@@ -1,0 +1,2 @@
+2022-06-21T12:18:19.5209052 500 : [{"timestamp":"2022-06-21T17:18:19.495+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; cons... (15619 bytes)]
+2022-06-21T12:28:07.9998797 500 : [{"timestamp":"2022-06-21T17:28:07.972+00:00","status":500,"error":"Internal Server Error","trace":"org.springframework.dao.DataIntegrityViolationException: could not execute statement; SQL [n/a]; cons... (15600 bytes)]

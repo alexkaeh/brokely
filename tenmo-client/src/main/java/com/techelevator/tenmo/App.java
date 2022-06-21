@@ -35,14 +35,14 @@ public class App {
     }
 
     private void loginMenu() {
-        int menuSelection = -1;
+        int menuSelection = -2;
         while (menuSelection != 0 && currentUser == null) {
             menuSelection = consoleService.getChoiceFromOptions(new String[]{"Register", "Login"});
             if (menuSelection == 0) {
                 handleRegister();
             } else if (menuSelection == 1) {
                 handleLogin();
-            } else if (menuSelection != -1) {
+            } else if (menuSelection != -2) {
                 System.out.println("Invalid Selection");
                 consoleService.pause();
             }
@@ -78,10 +78,13 @@ public class App {
             menuSelection = consoleService.getChoiceFromOptions(MenuArrays.MAIN_MENU_OPTIONS);
             if (menuSelection == 0) { // "View your current balance"
                 viewCurrentBalance();
+                consoleService.pause();
             } else if (menuSelection == 1) { // "View your past transfers"
                 viewTransferHistory();
+                consoleService.pause();
             } else if (menuSelection == 2) { // "View your pending requests"
                 viewPendingRequests();
+                consoleService.pause();
             } else if (menuSelection == 3) { // "Send TE bucks"
                 sendBucks();
             } else if (menuSelection == 4) { // "Request TE bucks"
@@ -91,7 +94,7 @@ public class App {
             } else {
                 System.out.println("Invalid Selection");
             }
-            consoleService.pause();
+//            consoleService.pause();
         }
     }
 
@@ -168,7 +171,10 @@ public class App {
                 currentUser.getUser().getUsername()
         );
         int recipientId = consoleService.promptForInt("Enter ID of user you are sending to (0 to cancel): ");
-
+        // check for 0 to cancel
+        if(recipientId == 0) {
+            return;
+        }
 
         //get transfer amount
         BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to be sent: ");
@@ -189,6 +195,8 @@ public class App {
         currentAccount.setBalance(updatedBalance);
 
         consoleService.printCurrentBalance(currentAccount);
+
+        consoleService.pause();
     }
 
     private void requestBucks() {
@@ -201,6 +209,10 @@ public class App {
         );
 
         int recipientId = consoleService.promptForInt("Enter ID of user you are requesting from (0 to cancel): ");
+        // check for 0 to cancel
+        if(recipientId == 0) {
+            return;
+        }
         BigDecimal transferAmount = consoleService.promptForBigDecimal("Enter amount to request: ");
         // Use index to get userId, send to server, and return new balance
         boolean wasSuccess = transferService.requestMoney(recipientId, transferAmount);
@@ -208,5 +220,7 @@ public class App {
         if (!wasSuccess) {
             System.out.println("Request failed.");
         }
+
+        consoleService.pause();
     }
 }
