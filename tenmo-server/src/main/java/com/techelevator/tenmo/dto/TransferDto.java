@@ -18,10 +18,10 @@ public class TransferDto {
     @Column(name = "transfer_status_desc", table = "transfer_status")
     private String transferStatusDesc;
 
-    @Column(name="username", table = "tenmo_user")
+    @Column(name = "username", table = "tenmo_user")
     private String accountFromName;
 
-    @Column(name="username", table = "tenmo_user")
+    @Column(name = "username", table = "tenmo_user")
     private String accountToName;
 
     private int otherUserInRequestId;

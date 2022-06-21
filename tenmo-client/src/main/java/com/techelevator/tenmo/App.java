@@ -102,7 +102,7 @@ public class App {
     private void viewTransferHistory() {
         TransferDto[] transfers = transferService.getAllTransfers();
 
-        if(transfers == null || transfers.length == 0) {
+        if (transfers == null || transfers.length == 0) {
             System.out.println("No transfers found.");
             return;
         }
@@ -117,7 +117,7 @@ public class App {
     private void viewPendingRequests() {
         TransferDto[] pendingTransfers = transferService.getPendingTransfers();
 
-        if(pendingTransfers == null || pendingTransfers.length == 0) {
+        if (pendingTransfers == null || pendingTransfers.length == 0) {
             System.out.println("No pending transfers found.");
             return;
         }
@@ -131,7 +131,7 @@ public class App {
         // prompt to approve or reject
         int transferId = consoleService.promptForInt("Please enter transfer ID to approve/reject (0 to cancel): ");
 
-        if(transferId == 0) {
+        if (transferId == 0) {
             return;
         }
 
@@ -139,19 +139,19 @@ public class App {
 
         int choice = consoleService.getChoiceFromOptions(new String[]{"Approve", "Reject"});
 
-        if(choice == 0) {
+        if (choice == 0) {
             BigDecimal updatedBalance = transferService.approveRequest(transferId);
 
-            if(updatedBalance.equals(currentAccount.getBalance())) {
+            if (updatedBalance.equals(currentAccount.getBalance())) {
                 System.out.println("Request failed.");
                 return;
             }
 
             currentAccount.setBalance(updatedBalance);
             consoleService.printCurrentBalance(currentAccount);
-        } else if(choice == 1) {
+        } else if (choice == 1) {
             boolean successfulReject = transferService.rejectRequest(transferId);
-            if(successfulReject) {
+            if (successfulReject) {
                 System.out.println("Transfer rejected.");
             } else {
                 System.out.println("Request failed.");
@@ -163,7 +163,7 @@ public class App {
         UserDto[] users = userService.getUsers();
         // Get user to send money to
         consoleService.printTable(
-                new String[] {"ID","Name"},
+                new String[]{"ID", "Name"},
                 users,
                 currentUser.getUser().getUsername()
         );
@@ -182,7 +182,7 @@ public class App {
         // Update in memory balance
 
         // Checks to see if balance has changed. If not, then the server did not fulfil the request.
-        if(updatedBalance.equals(currentAccount.getBalance())) {
+        if (updatedBalance.equals(currentAccount.getBalance())) {
             System.out.println("Request failed.");
         }
 
@@ -195,7 +195,7 @@ public class App {
         UserDto[] users = userService.getUsers();
 
         consoleService.printTable(
-                new String[] {"ID","Name"},
+                new String[]{"ID", "Name"},
                 users,
                 currentUser.getUser().getUsername()
         );

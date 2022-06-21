@@ -1,8 +1,6 @@
 /**
  * This object is represents many joins being performed by the server to retrieve data from many tables, to create a
  * human-readable version of the "transfer" table in our database.
- *
- *
  */
 package com.techelevator.tenmo.model;
 
@@ -52,17 +50,13 @@ public class TransferDto implements Arrayable {
 
     // This method is used when a single transfer is being displayed, and contains more detail.
     @Override
-    public String toString(){
-        StringBuilder sb = new StringBuilder();
-
-        sb.append("Id: ").append(transferId);
-        sb.append("\nFrom: ").append(accountFromName);
-        sb.append("\nTo: ").append(accountToName);
-        sb.append("\nType: ").append(transferTypeDesc);
-        sb.append("\nStatus: ").append(transferStatusDesc);
-        sb.append("\nAmount: ").append(amount);
-
-        return sb.toString();
+    public String toString() {
+        return "Id: " + transferId +
+                "\nFrom: " + accountFromName +
+                "\nTo: " + accountToName +
+                "\nType: " + transferTypeDesc +
+                "\nStatus: " + transferStatusDesc +
+                "\nAmount: " + amount;
     }
 
     public int getTransferId() {

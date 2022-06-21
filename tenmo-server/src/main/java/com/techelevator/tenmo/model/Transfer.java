@@ -27,12 +27,6 @@ public class Transfer {
 
     BigDecimal amount;
 
-
-    //    int transferTypeId;
-//    int transferStatusId;
-//    int accountFrom;
-//    int accountTo;
-
     public Transfer(int transferId, TransferType transferType, TransferStatus transferStatus, Account accountFrom, Account accountTo, BigDecimal amount) {
         this.transferId = transferId;
         this.transferType = transferType;
@@ -52,6 +46,7 @@ public class Transfer {
 
     public Transfer() {
     }
+
 
     public int getTransferId() {
         return this.transferId;

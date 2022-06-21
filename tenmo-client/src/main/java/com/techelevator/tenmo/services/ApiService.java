@@ -10,7 +10,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.client.RestTemplate;
 
 public abstract class ApiService {
-    
+
     protected final String API_URL;
     protected RestTemplate restTemplate = new RestTemplate();
 

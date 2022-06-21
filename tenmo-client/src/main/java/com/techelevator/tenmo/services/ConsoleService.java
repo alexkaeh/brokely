@@ -17,31 +17,31 @@ public class ConsoleService {
     public static final int CELL_WIDTH = 16;
 
     public void printTable(String[] headers, Arrayable[] objects, String currentUser) {
-        if(headers == null || objects == null || objects.length == 0) {
+        if (headers == null || objects == null || objects.length == 0) {
             return;
         }
 
         // Set the number of cells in each row based on the length of headers[]
         final int ROW_LENGTH = headers.length;
 
-        for(String cell : headers) {
-            System.out.printf("|%-" + CELL_WIDTH + "s", cell);
+        for (String cell : headers) {
+            System.out.printf("%-" + CELL_WIDTH + "s", cell);
         }
 
         // Print new line followed up repeating dash
         System.out.println("\n" + "-".repeat((CELL_WIDTH) * ROW_LENGTH));
 
-        for(Arrayable obj : objects) {
-            if(obj == null) {
+        for (Arrayable obj : objects) {
+            if (obj == null) {
                 continue;
             }
             String[] currentRow = obj.toStringArray(currentUser);
 
             // The UserDto class will set the current user to null in objects array, so we skip it
-            if(currentRow == null) {
+            if (currentRow == null) {
                 continue;
             }
-            for(String cell : currentRow) {
+            for (String cell : currentRow) {
                 System.out.printf("%-" + CELL_WIDTH + "s", cell);
             }
             System.out.println();
@@ -101,10 +101,10 @@ public class ConsoleService {
     }
 
     // helper method
-    public void displayUsers(UserDto[] users){
+    public void displayUsers(UserDto[] users) {
         System.out.println("\n------------------------------------\nUsers\nID\t\tUsername\n------------------------------------");
-        for (UserDto user : users){
-            System.out.println(user.getId()+"\t"+user.getUsername());
+        for (UserDto user : users) {
+            System.out.println(user.getId() + "\t" + user.getUsername());
         }
         System.out.println("------------------------------------");
     }

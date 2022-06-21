@@ -1,7 +1,5 @@
 /**
  * RestTemplate methods for accessing the transfer table in our database. The workhorse of our client app.
- *
- *
  */
 package com.techelevator.tenmo.services;
 
@@ -24,8 +22,8 @@ public class TransferService extends ApiService {
     }
 
 
-    public TransferDto[] getAllTransfers(){
-       TransferDto[] transfers = null;
+    public TransferDto[] getAllTransfers() {
+        TransferDto[] transfers = null;
         try {
             ResponseEntity<TransferDto[]> response =
                     restTemplate.exchange(API_URL, HttpMethod.GET, makeAuthEntity(), TransferDto[].class);
@@ -48,7 +46,7 @@ public class TransferService extends ApiService {
         return transfers;
     }
 
-    public BigDecimal sendMoney(int userToId, BigDecimal amount){
+    public BigDecimal sendMoney(int userToId, BigDecimal amount) {
         TransferDto transfer = new TransferDto();
         transfer.setOtherUserInRequestId(userToId);
         transfer.setAmount(amount);
@@ -63,7 +61,7 @@ public class TransferService extends ApiService {
         }
     }
 
-    public Boolean requestMoney(int userFromId, BigDecimal amount){
+    public Boolean requestMoney(int userFromId, BigDecimal amount) {
         TransferDto transfer = new TransferDto();
         transfer.setOtherUserInRequestId(userFromId);
         transfer.setAmount(amount);
@@ -77,10 +75,10 @@ public class TransferService extends ApiService {
         }
     }
 
-    public BigDecimal approveRequest(int transferId){
+    public BigDecimal approveRequest(int transferId) {
         BigDecimal returnedBalance = null;
-        try{
-            HttpEntity<BigDecimal> response = restTemplate.exchange(Url.APPROVE.toString()+transferId, HttpMethod.PUT,makeAuthEntity(),BigDecimal.class);
+        try {
+            HttpEntity<BigDecimal> response = restTemplate.exchange(Url.APPROVE.toString() + transferId, HttpMethod.PUT, makeAuthEntity(), BigDecimal.class);
             returnedBalance = response.getBody();
         } catch (RestClientException e) {
             BasicLogger.log(e.getMessage());
@@ -88,9 +86,9 @@ public class TransferService extends ApiService {
         return returnedBalance;
     }
 
-    public boolean rejectRequest(int transferId){
-        try{
-            HttpEntity<Boolean> response = restTemplate.exchange(Url.REJECT.toString()+transferId, HttpMethod.PUT,makeAuthEntity(),Boolean.class);
+    public boolean rejectRequest(int transferId) {
+        try {
+            HttpEntity<Boolean> response = restTemplate.exchange(Url.REJECT.toString() + transferId, HttpMethod.PUT, makeAuthEntity(), Boolean.class);
             return Boolean.TRUE.equals(response.getBody());
         } catch (RestClientException | NullPointerException e) {
             BasicLogger.log(e.getMessage());

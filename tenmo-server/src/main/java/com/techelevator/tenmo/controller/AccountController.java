@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.math.BigDecimal;
 import java.security.Principal;
-import java.util.Optional;
-
-import static org.hibernate.validator.internal.util.Contracts.assertTrue;
 
 @RestController
 @RequestMapping("/account")

@@ -21,7 +21,7 @@ public class AccountService extends ApiService {
     }
 
     //CHANGED TO BigDecimal
-    public BigDecimal getBalance(){
+    public BigDecimal getBalance() {
         BigDecimal balance = null;
         try {
             ResponseEntity<BigDecimal> response = restTemplate.exchange(Url.BALANCE.toString(), HttpMethod.GET, makeAuthEntity(), BigDecimal.class);

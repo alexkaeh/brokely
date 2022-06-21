@@ -3,10 +3,11 @@
  */
 package com.techelevator.tenmo.controller;
 
-import com.techelevator.tenmo.logic.TransferLogic;
 import com.techelevator.tenmo.dto.TransferDto;
+import com.techelevator.tenmo.logic.TransferLogic;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -17,9 +18,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/transfer")
+@PreAuthorize("isAuthenticated()")
 public class TransferController {
 
-    private TransferLogic transferLogic;
+    private final TransferLogic transferLogic;
 
     @Autowired
     public TransferController(TransferLogic transferLogic) {

@@ -11,12 +11,13 @@ import org.springframework.stereotype.Component;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Component
 public class JdbcUserDao implements UserDao {
 
     private static final BigDecimal STARTING_BALANCE = new BigDecimal("1000.00");
-    private JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
     public JdbcUserDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
@@ -26,22 +27,14 @@ public class JdbcUserDao implements UserDao {
     public int findIdByUsername(String username) {
         String sql = "SELECT user_id FROM tenmo_user WHERE username ILIKE ?;";
         Integer id = jdbcTemplate.queryForObject(sql, Integer.class, username);
-        if (id != null) {
-            return id;
-        } else {
-            return -1;
-        }
+        return Objects.requireNonNullElse(id, -1);
     }
 
     @Override
     public String findUsernameById(int id) {
         String sql = "SELECT username FROM tenmo_user WHERE user_id = ?;";
         String name = jdbcTemplate.queryForObject(sql, String.class, id);
-        if (name != null) {
-            return name;
-        } else {
-            return "";
-        }
+        return Objects.requireNonNullElse(name, "");
     }
 
     @Override
@@ -49,7 +42,7 @@ public class JdbcUserDao implements UserDao {
         List<User> users = new ArrayList<>();
         String sql = "SELECT user_id, username, password_hash FROM tenmo_user;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-        while(results.next()) {
+        while (results.next()) {
             User user = mapRowToUser(results);
             users.add(user);
         }
@@ -60,7 +53,7 @@ public class JdbcUserDao implements UserDao {
     public User findByUsername(String username) throws UsernameNotFoundException {
         String sql = "SELECT user_id, username, password_hash FROM tenmo_user WHERE username ILIKE ?;";
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, username);
-        if (rowSet.next()){
+        if (rowSet.next()) {
             return mapRowToUser(rowSet);
         }
         throw new UsernameNotFoundException("User " + username + " was not found.");

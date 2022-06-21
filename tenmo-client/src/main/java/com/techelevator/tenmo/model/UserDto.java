@@ -11,7 +11,7 @@ public class UserDto implements Arrayable {
     public String[] toStringArray(String currentUser) {
         // Since the current user should not be displayed in a list of users, this sets that user to null.
         // The ConsoleService#printTable method will then skip any null values it finds in the array.
-        if(this.username.equals(currentUser)) {
+        if (this.username.equals(currentUser)) {
             return null;
         }
         String[] arr = new String[2];

@@ -4,25 +4,47 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="debugging">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2022_7_26_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2022_7_26_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2022_7_28_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_6_19_2022_7_28_PM__Changes_.xml" afterDir="false" />
+    <list default="true" id="aedc5d15-5daa-4ad3-a91f-410ba58b763f" name="Changes" comment="add comments">
+      <change beforePath="$PROJECT_DIR$/../database/tenmo-transfers.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../database/tenmo-transfers.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/logs/2022-06-19.log" beforeDir="false" afterPath="$PROJECT_DIR$/logs/2022-06-19.log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/info/Url.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/info/Url.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/Arrayable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/Arrayable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/AuthenticatedUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/AuthenticatedUser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/TransferDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/TransferDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserCredentials.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserCredentials.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/model/UserDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/AccountService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/AccountService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ApiService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ConsoleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/ConsoleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/OldConsoleService.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/TransferService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/TransferService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/techelevator/tenmo/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/info/Url.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/info/Url.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/TransferDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/TransferDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/UserDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/model/UserDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/APIService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/APIService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/AccountService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/AccountService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/ConsoleService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/ConsoleService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/TransferService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/TransferService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/techelevator/tenmo/services/UserService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AccountController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AccountController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AuthenticationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/AuthenticationController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/TransferController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/AccountRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/AccountRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/JdbcUserDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/JdbcUserDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferTypeRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dao/TransferTypeRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/Authority.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/Authority.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/LoginDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/LoginDto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/TransferDto.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/dto/TransferDto.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/Message.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/TransferLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/logic/TransferLogic.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Account.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Account.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Transfer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/Transfer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/WebSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/WebSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/jwt/JWTConfigurer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/jwt/JWTConfigurer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/jwt/JWTFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/../tenmo-server/src/main/java/com/techelevator/tenmo/security/jwt/JWTFilter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,12 +97,17 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "settings.editor.selected.configurable": "preferences.pluginManager"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.techelevator.tenmo.model" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.App">
+  <component name="RunManager" selected="Application.com.techelevator.tenmo.TenmoApplication">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -229,7 +256,14 @@
       <option name="project" value="LOCAL" />
       <updated>1655688984794</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="add comments">
+      <created>1655759815139</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1655759815139</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -257,6 +291,7 @@
     <MESSAGE value="menus don't make me want to die" />
     <MESSAGE value="naughty boolean" />
     <MESSAGE value="naughty boolean/good users" />
-    <option name="LAST_COMMIT_MESSAGE" value="naughty boolean/good users" />
+    <MESSAGE value="add comments" />
+    <option name="LAST_COMMIT_MESSAGE" value="add comments" />
   </component>
 </project>
