@@ -21,9 +21,17 @@ public class App {
     private AuthenticatedUser currentUser;
     private Account currentAccount;
 
+    private boolean exit;
+
     public static void main(String[] args) {
-        App app = new App();
-        app.run();
+        App app;
+        do{
+            app = new App();
+            app.exit = true;
+            app.run();
+        }while(!app.exit);
+
+        System.out.println("Bye!");
     }
 
     private void run() {
@@ -88,8 +96,11 @@ public class App {
                 sendBucks();
             } else if (menuSelection == 4) { // "Request TE bucks"
                 requestBucks();
+            } else if (menuSelection == 5) { // Switch users
+                this.exit = false;
+                break;
             } else if (menuSelection == -1) { // "Exit"
-                continue;
+                this.exit = true;
             } else {
                 System.out.println("Invalid Selection");
             }
@@ -233,8 +244,8 @@ public class App {
 
         if (!wasSuccess) {
             System.out.println("Request failed.");
+            consoleService.pause();
         }
 
-        consoleService.pause();
     }
 }

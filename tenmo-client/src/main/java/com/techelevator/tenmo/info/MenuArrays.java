@@ -7,7 +7,8 @@ public abstract class MenuArrays {
             "View your past transfers",
             "View your pending requests",
             "Send TE bucks",
-            "Request TE bucks"
+            "Request TE bucks",
+            "Switch users",
     };
 
 }
